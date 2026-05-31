@@ -1,4 +1,4 @@
-import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Carousel from './components/Carousel';
@@ -9,8 +9,10 @@ import ProviderEarnings from './components/ProviderEarnings';
 import FAQ from './components/FAQ';
 import FooterCTA from './components/FooterCTA';
 import FooterLinks from './components/FooterLinks';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Terms from './pages/Terms';
 
-export default function App() {
+function LandingPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden antialiased">
       <Navbar />
@@ -24,5 +26,17 @@ export default function App() {
       <FooterCTA />
       <FooterLinks />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

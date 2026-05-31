@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function FooterLinks() {
   return (
@@ -34,13 +34,13 @@ export default function FooterLinks() {
 
         {/* Right Side Links */}
         <div className="flex items-center gap-3">
-          <a href="#" className="hover:text-white transition-colors duration-300">
+          <Link to="/privacy" className="hover:text-white transition-colors duration-300">
             Privacy Policy
-          </a>
+          </Link>
           <span className="text-white/20 select-none">|</span>
-          <a href="#" className="hover:text-white transition-colors duration-300">
+          <Link to="/terms" className="hover:text-white transition-colors duration-300">
             Terms of Service
-          </a>
+          </Link>
         </div>
 
       </div>
