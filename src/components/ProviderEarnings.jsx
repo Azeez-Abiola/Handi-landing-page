@@ -97,7 +97,7 @@ export default function ProviderEarnings() {
           <div className="flex flex-col">
             {listItems.map((item, idx) => (
               <ScrollReveal key={idx} direction="left" delay={100 + idx * 120}>
-                <div className="flex gap-4 py-5 border-b border-white/10 last:border-0 hover:bg-white/5 px-2 rounded-lg transition-colors duration-300">
+                <div className={`flex gap-4 py-5 hover:bg-white/5 px-2 rounded-lg transition-colors duration-300 ${idx < listItems.length - 1 ? 'border-b border-white/10' : ''}`}>
                   <div className="mt-1 shrink-0">
                     {item.icon}
                   </div>
