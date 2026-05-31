@@ -1,0 +1,119 @@
+/* ==========================================================================
+   HANDI LANDING PAGE - TAILWIND CSS V4 MASTER STYLESHEET
+   ========================================================================== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* Import Tailwind CSS v4 */
+@import "tailwindcss";
+
+@theme {
+  /* Design Tokens Customizations */
+  --font-heading: 'Familjen Grotesk', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  --color-hero-bg: #0C9348;
+  --color-active-green: #06C167;
+  --color-dark-green: #044422;
+  --color-footer-btn: #0C9348;
+}
+
+/* Caret blinking keyframe animation */
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+.caret {
+  display: inline-block;
+  width: 2.5px;
+  height: 1em;
+  background-color: #06C167;
+  margin-left: 4px;
+  animation: blink 1.2s infinite steps(2, start);
+  vertical-align: middle;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Floating cursor mockup animation */
+@keyframes floating-cursor {
+  0% { transform: translateY(0) rotate(-15deg); }
+  100% { transform: translateY(-8px) rotate(-10deg); }
+}
+
+.animate-floating-cursor {
+  animation: floating-cursor 3s ease-in-out infinite alternate;
+}
+
+/* Infinite marquee sliding animation for background carousel */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
+              transform 0.65s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+              transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-left.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+              transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-right.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Step card fade swap ── */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.fade-swap {
+  animation: fadeSlideIn 0.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+/* ── Mobile base resets ── */
+@media (max-width: 1024px) {
+  html { overflow-x: hidden; }
+}
+
