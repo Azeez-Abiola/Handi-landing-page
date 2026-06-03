@@ -14,7 +14,7 @@ import Terms from './pages/Terms';
 
 function LandingPage() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden antialiased">
+    <div className="min-h-screen bg-white text-gray-900 antialiased">
       <Navbar />
       <Hero />
       <Carousel />

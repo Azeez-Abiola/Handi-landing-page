@@ -112,8 +112,8 @@
   animation: fadeSlideIn 0.4s cubic-bezier(0.16,1,0.3,1) both;
 }
 
-/* ── Mobile base resets ── */
-@media (max-width: 1024px) {
-  html { overflow-x: hidden; }
+/* Prevent horizontal scroll without breaking position:sticky */
+html, body {
+  overflow-x: clip;
 }
 
