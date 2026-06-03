@@ -27,18 +27,46 @@ const stepsData = [
   },
 ];
 
-function StepCard({ step, isActive, onClick, onMouseEnter, onMouseLeave, mobile }) {
+/* Smooth crossfade image — no remount, no jank */
+function StepImage({ activeStep, style, className }) {
+  const [shownStep, setShownStep] = useState(activeStep);
+  const [opacity, setOpacity] = useState(1);
+  const timerRef = useRef(null);
+
+  useEffect(() => {
+    if (activeStep === shownStep) return;
+    clearTimeout(timerRef.current);
+    // Fade out
+    setOpacity(0);
+    // After fade-out completes, swap image and fade in
+    timerRef.current = setTimeout(() => {
+      setShownStep(activeStep);
+      setOpacity(1);
+    }, 350);
+    return () => clearTimeout(timerRef.current);
+  }, [activeStep]);
+
+  return (
+    <img
+      src={`/images/get-help-images/card-${shownStep}.png`}
+      alt={`Step ${shownStep}`}
+      draggable="false"
+      className={className}
+      style={{ ...style, opacity, transition: 'opacity 0.4s ease' }}
+    />
+  );
+}
+
+function StepCard({ step, isActive, onClick, mobile }) {
   return (
     <div
       onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
       style={{
         height: mobile ? undefined : '285px',
         minHeight: mobile ? '160px' : undefined,
         borderRadius: '12px',
       }}
-      className={`p-6 lg:p-8 flex flex-col justify-between cursor-pointer transition-all duration-500 border ${
+      className={`p-6 lg:p-8 flex flex-col justify-between ${onClick ? 'cursor-pointer' : ''} transition-all duration-500 border ${
         isActive
           ? 'bg-white border-[#06C167]/20 shadow-md'
           : 'bg-[#F2F2F2] border-transparent'
@@ -60,7 +88,6 @@ function StepCard({ step, isActive, onClick, onMouseEnter, onMouseLeave, mobile 
 }
 
 export default function Steps() {
-  // Initialise synchronously so there's never a flash of wrong layout
   const [isDesktop, setIsDesktop] = useState(() =>
     typeof window !== 'undefined' ? window.innerWidth >= 1024 : false
   );
@@ -68,38 +95,33 @@ export default function Steps() {
   const containerRef = useRef(null);
   const autoRotateRef = useRef(null);
 
-  /* Keep isDesktop in sync with window width */
+  /* Keep isDesktop in sync */
   useEffect(() => {
     const onResize = () => setIsDesktop(window.innerWidth >= 1024);
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  /* ── Desktop: scroll drives the active step ──────────────────── */
+  /* Desktop: scroll drives the active step — nothing auto-rotates */
   useEffect(() => {
     if (!isDesktop) return;
-
     const onScroll = () => {
       const el = containerRef.current;
       if (!el) return;
       const { top, height } = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      // How far we have scrolled INTO the container past the top of the viewport
       const scrolledIn = Math.max(0, -top);
-      // Total amount we can scroll before the container bottom exits the viewport
       const maxScroll = height - vh;
       if (maxScroll <= 0) return;
       const progress = Math.min(1, scrolledIn / maxScroll);
-      // 4 equal bands: 0–0.25 → step1, 0.25–0.5 → step2, etc.
       setActiveStep(Math.min(4, Math.floor(progress * 4) + 1));
     };
-
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // sync on mount
+    onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, [isDesktop]);
 
-  /* ── Mobile: auto-rotate every 5 s ──────────────────────────── */
+  /* Mobile: auto-rotate every 5 s, reset on click */
   useEffect(() => {
     if (isDesktop) {
       clearInterval(autoRotateRef.current);
@@ -121,17 +143,6 @@ export default function Steps() {
     );
   };
 
-  const stopAuto = () => clearInterval(autoRotateRef.current);
-  const startAuto = () => {
-    if (!isDesktop) return;
-    stopAuto();
-    autoRotateRef.current = setInterval(
-      () => setActiveStep(p => (p % 4) + 1),
-      5000
-    );
-  };
-
-  /* ── Shared intro block ──────────────────────────────────────── */
   const Intro = () => (
     <div className="mb-8 md:mb-12">
       <h2 className="font-heading font-medium text-2xl md:text-[38px] text-gray-900 tracking-[-0.02em] mb-3">
@@ -155,7 +166,7 @@ export default function Steps() {
     </div>
   );
 
-  /* ── MOBILE layout (normal document flow) ────────────────────── */
+  /* ── MOBILE ── */
   if (!isDesktop) {
     return (
       <section className="bg-white pt-20 pb-16">
@@ -175,12 +186,9 @@ export default function Steps() {
             </div>
             <div className="h-px bg-gray-200 mx-[9px]" />
             <div className="p-[9px]">
-              <img
-                key={activeStep}
-                src={`/images/get-help-images/card-${activeStep}.png`}
-                alt={`Step ${activeStep}`}
-                draggable="false"
-                className="w-full rounded-xl object-cover fade-swap"
+              <StepImage
+                activeStep={activeStep}
+                className="w-full rounded-xl object-cover"
                 style={{ height: '280px' }}
               />
             </div>
@@ -190,11 +198,7 @@ export default function Steps() {
     );
   }
 
-  /* ── DESKTOP layout — scroll-jacking ─────────────────────────── */
-  // Container is 300 vh tall.
-  // Sticky element is 100 vh → 200 vh of scroll space → 50 vh per step.
-  // After 200 vh scroll the container bottom exits the viewport and the
-  // next section naturally scrolls into view — no JavaScript needed.
+  /* ── DESKTOP — scroll-jacking ── */
   return (
     <div ref={containerRef} style={{ height: '300vh' }}>
       <div
@@ -203,8 +207,6 @@ export default function Steps() {
       >
         <div className="max-w-[1380px] mx-auto px-6 w-full">
           <Intro />
-
-          {/* Desktop card grid + image */}
           <div
             className="flex bg-[#F5F5F5] border border-gray-200 rounded-xl overflow-hidden"
             style={{ width: '1301px' }}
@@ -224,20 +226,17 @@ export default function Steps() {
                   key={step.id}
                   step={step}
                   isActive={activeStep === step.id}
-                  onMouseEnter={stopAuto}
-                  onMouseLeave={startAuto}
+                  /* Desktop cards don't have onClick or auto-rotate —
+                     scroll is the only driver */
                 />
               ))}
             </div>
 
             <div className="bg-gray-200 self-stretch flex-shrink-0" style={{ width: '1px' }} />
 
-            <img
-              key={`d-${activeStep}`}
-              src={`/images/get-help-images/card-${activeStep}.png`}
-              alt={`Step ${activeStep}`}
-              draggable="false"
-              className="flex-shrink-0 object-cover fade-swap"
+            <StepImage
+              activeStep={activeStep}
+              className="flex-shrink-0 object-cover"
               style={{ width: '561px', height: '583px', margin: '9px', borderRadius: '12px' }}
             />
           </div>
