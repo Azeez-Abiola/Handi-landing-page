@@ -1,4 +1,3 @@
-import React from 'react';
 import ScrollReveal from './ScrollReveal';
 
 export default function FooterCTA() {
@@ -37,7 +36,7 @@ export default function FooterCTA() {
           className="font-heading font-medium text-3xl md:text-[40px] leading-tight text-white mb-8 tracking-[-0.02em]"
           style={{ maxWidth: '381px' }}
         >
-          Get started with <br /> Handi, today.
+          Ready to fix it?<br />Download Handi now.
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">

@@ -102,7 +102,7 @@ export default function Carousel() {
         <ScrollReveal>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-10 mb-12">
           <h2 className="font-heading font-medium text-3xl md:text-4xl text-gray-900 leading-[1.15] max-w-[600px] tracking-[-0.02em]">
-            Your one-stop shop for 250+ vetted professionals across 12 fields.
+            1000+ Vetted Professionals Ready to Help — Today
           </h2>
           
           <div className="flex gap-3 self-end md:self-auto">

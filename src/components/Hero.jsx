@@ -136,58 +136,25 @@ export default function Hero() {
             letterSpacing: '-0.02em',
           }}
         >
-          Find trusted service professionals near you and <br /> book in minutes — no endless calls, no guesswork.
+          No more WhatsApp messages. No surprise charges. No flaky artisans. Just reliable professionals rated by real customers, available when you need them.
         </p>
 
-        {/* App Store Badges — User + Provider stacked */}
-        <div className="flex flex-col gap-5 w-full max-w-[520px] z-30">
-
-          {/* User App */}
-          <div className="flex flex-col gap-2">
-            <span className="font-body font-semibold text-[10px] uppercase tracking-widest text-white/50 text-center">
-              User App (For Customers)
-            </span>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a href="#" className="bg-white text-gray-900 border border-gray-100 flex items-center h-[44px] rounded-xl overflow-hidden transition-all duration-300 hover:bg-gray-50 hover:-translate-y-0.5 shadow-md w-full sm:w-[245px]">
-                <span className="flex-1 px-[15px] font-body font-semibold text-xs leading-none">Download on the App Store</span>
-                <div className="w-px self-stretch bg-gray-200 shrink-0" />
-                <div className="w-11 flex items-center justify-center shrink-0">
-                  <img src="/apple-icon.png" alt="Apple" className="w-[18px] h-auto object-contain" />
-                </div>
-              </a>
-              <a href="#" className="text-white border border-white/10 flex items-center h-[44px] rounded-xl overflow-hidden transition-all duration-300 hover:bg-black/80 hover:-translate-y-0.5 shadow-md w-full sm:w-[206px]" style={{ backgroundColor: '#1E1E20' }}>
-                <span className="flex-1 px-[15px] font-body font-semibold text-xs leading-none">Get it on Google Play</span>
-                <div className="w-px self-stretch bg-white/15 shrink-0" />
-                <div className="w-11 flex items-center justify-center shrink-0">
-                  <img src="/googleplay-icon.png" alt="Google Play" className="w-[18px] h-auto object-contain" />
-                </div>
-              </a>
+        {/* App Store Badges */}
+        <div className="flex flex-col sm:flex-row gap-3 z-30">
+          <a href="#" className="bg-white text-gray-900 border border-gray-100 flex items-center h-[44px] rounded-xl overflow-hidden transition-all duration-300 hover:bg-gray-50 hover:-translate-y-0.5 shadow-md w-full sm:w-[245px]">
+            <span className="flex-1 px-[15px] font-body font-semibold text-xs leading-none">Download on the App Store</span>
+            <div className="w-px self-stretch bg-gray-200 shrink-0" />
+            <div className="w-11 flex items-center justify-center shrink-0">
+              <img src="/apple-icon.png" alt="Apple" className="w-[18px] h-auto object-contain" />
             </div>
-          </div>
-
-          {/* Provider App */}
-          <div className="flex flex-col gap-2">
-            <span className="font-body font-semibold text-[10px] uppercase tracking-widest text-white/50 text-center">
-              Provider App (For Artisans)
-            </span>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a href="#" className="bg-white text-gray-900 border border-gray-100 flex items-center h-[44px] rounded-xl overflow-hidden transition-all duration-300 hover:bg-gray-50 hover:-translate-y-0.5 shadow-md w-full sm:w-[245px]">
-                <span className="flex-1 px-[15px] font-body font-semibold text-xs leading-none">Download on the App Store</span>
-                <div className="w-px self-stretch bg-gray-200 shrink-0" />
-                <div className="w-11 flex items-center justify-center shrink-0">
-                  <img src="/apple-icon.png" alt="Apple" className="w-[18px] h-auto object-contain" />
-                </div>
-              </a>
-              <a href="#" className="text-white border border-white/10 flex items-center h-[44px] rounded-xl overflow-hidden transition-all duration-300 hover:bg-black/80 hover:-translate-y-0.5 shadow-md w-full sm:w-[206px]" style={{ backgroundColor: '#1E1E20' }}>
-                <span className="flex-1 px-[15px] font-body font-semibold text-xs leading-none">Get it on Google Play</span>
-                <div className="w-px self-stretch bg-white/15 shrink-0" />
-                <div className="w-11 flex items-center justify-center shrink-0">
-                  <img src="/googleplay-icon.png" alt="Google Play" className="w-[18px] h-auto object-contain" />
-                </div>
-              </a>
+          </a>
+          <a href="#" className="text-white border border-white/10 flex items-center h-[44px] rounded-xl overflow-hidden transition-all duration-300 hover:bg-black/80 hover:-translate-y-0.5 shadow-md w-full sm:w-[206px]" style={{ backgroundColor: '#1E1E20' }}>
+            <span className="flex-1 px-[15px] font-body font-semibold text-xs leading-none">Get it on Google Play</span>
+            <div className="w-px self-stretch bg-white/15 shrink-0" />
+            <div className="w-11 flex items-center justify-center shrink-0">
+              <img src="/googleplay-icon.png" alt="Google Play" className="w-[18px] h-auto object-contain" />
             </div>
-          </div>
-
+          </a>
         </div>
       </div>
     </section>

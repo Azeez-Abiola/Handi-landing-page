@@ -23,7 +23,7 @@ export default function FooterLinks() {
                 letterSpacing: '-0.01em',
               }}
             >
-              handi
+              Handi
             </span>
           </div>
           <span className="text-white/20 hidden sm:inline">|</span>

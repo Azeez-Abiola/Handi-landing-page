@@ -28,7 +28,7 @@ export default function Testimonial() {
               }}
               className="text-white"
             >
-              Handi came through when I needed<br />to assasinate Saheed. 10/10 service<br />provider, will definitely use again!
+              My AC broke on a Friday afternoon. I posted on Handi at 4:30 PM. A technician arrived by 5:15 PM and fixed it the same day. No guessing, no waiting days for a call back. 10/10.
             </p>
           </div>
         </ScrollReveal>

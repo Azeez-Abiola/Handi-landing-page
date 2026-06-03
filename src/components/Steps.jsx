@@ -62,7 +62,7 @@ export default function Steps() {
               Get help in minutes.
             </h2>
             <p className="font-body text-[#555] text-sm md:text-base leading-relaxed max-w-[500px]">
-              Find trusted service professionals near you and <br className="hidden sm:block" /> book in minutes — no endless calls, no guesswork.
+              Say goodbye to unreliable artisans and surprise pricing. Handi connects you with vetted, rated professionals who show up, do the work, and get paid transparently.
             </p>
           </div>
         </ScrollReveal>

@@ -20,7 +20,7 @@ export default function Navbar() {
               letterSpacing: '-0.01em',
             }}
           >
-            handi
+            Handi
           </span>
         </a>
       </div>
