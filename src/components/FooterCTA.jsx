@@ -9,7 +9,7 @@ export default function FooterCTA() {
     "/images/handi-img5.png"
   ];
 
-  const doubledImages = [...images, ...images];
+  const repeatedImages = [...images, ...images, ...images, ...images];
 
   return (
     <section className="bg-black py-20 md:py-24 select-none relative overflow-hidden flex flex-col items-center justify-center min-h-[480px] md:min-h-[560px]">
@@ -17,8 +17,8 @@ export default function FooterCTA() {
       {/* Background carousel */}
       <div className="absolute inset-0 flex items-center opacity-75 md:opacity-90 pointer-events-none z-0">
         <div className="w-full overflow-hidden relative">
-          <div className="flex gap-6 w-max animate-marquee py-4">
-            {doubledImages.map((img, idx) => (
+          <div className="flex gap-6 w-max animate-marquee py-4" style={{ willChange: 'transform' }}>
+            {repeatedImages.map((img, idx) => (
               <div
                 key={idx}
                 className="w-[150px] md:w-[230px] h-[220px] md:h-[320px] rounded-2xl overflow-hidden shadow-2xl shrink-0 brightness-[0.75] border border-white/5"

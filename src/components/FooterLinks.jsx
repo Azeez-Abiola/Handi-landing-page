@@ -79,8 +79,8 @@ export default function FooterLinks() {
     <footer className="bg-black select-none">
       <div className="max-w-[1200px] mx-auto px-6 py-14 flex flex-col lg:flex-row justify-between gap-12">
 
-        {/* Brand + copyright stacked */}
-        <div className="flex flex-col gap-4 shrink-0">
+        {/* Brand */}
+        <div className="shrink-0">
           <div className="flex items-center gap-2">
             <img
               src="/images/handi-logo-light-green.png"
@@ -99,7 +99,6 @@ export default function FooterLinks() {
               Handi
             </span>
           </div>
-          <span className="font-body text-xs text-white">© 2026 Handi. All rights reserved.</span>
         </div>
 
         {/* Link columns */}
@@ -162,6 +161,13 @@ export default function FooterLinks() {
           </div>
 
         </div>
+      </div>
+
+      {/* Bottom strip — copyright far left */}
+      <div className="border-t border-white/10 py-5 px-6">
+        <p className="max-w-[1200px] mx-auto font-body text-xs text-white/60">
+          © 2026 Handi. All rights reserved.
+        </p>
       </div>
 
     </footer>
