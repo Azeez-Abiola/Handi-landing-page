@@ -143,35 +143,65 @@ export default function Steps() {
     </div>
   );
 
-  /* ── MOBILE: each step full-width with its own image ── */
+  /* ── MOBILE: full-height cards with embedded image ── */
   if (!isDesktop) {
     return (
       <section className="bg-white pt-20 pb-16">
-        <div className="max-w-[1380px] mx-auto px-6">
-          <Intro />
-          <div className="flex flex-col gap-6">
+        <div className="mx-auto px-4">
+          <div className="px-2 mb-8 md:mb-12">
+            <h2 className="font-heading font-medium text-2xl text-gray-900 tracking-[-0.02em] mb-3">
+              Get help in minutes.
+            </h2>
+            <p
+              className="text-[#555]"
+              style={{
+                fontFamily: "'Google Sans', 'Plus Jakarta Sans', sans-serif",
+                fontWeight: 400,
+                fontSize: '16px',
+                lineHeight: '1.15',
+                letterSpacing: '-0.02em',
+                maxWidth: '364px',
+              }}
+            >
+              Say goodbye to unreliable artisans and surprise pricing. Handi connects you with vetted, rated professionals who show up, do the work, and get paid transparently.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-4">
             {stepsData.map(step => (
-              <div key={step.id} className="flex flex-col gap-3">
-                {/* Step info card */}
-                <div className="flex flex-col gap-2">
-                  <span className="font-heading font-semibold text-3xl text-gray-900">
+              <div
+                key={step.id}
+                className="flex flex-col overflow-hidden w-full"
+                style={{
+                  minHeight: '594px',
+                  backgroundColor: '#F8F8F8',
+                  border: '1px solid #F0F0F0',
+                  borderRadius: '16px',
+                }}
+              >
+                {/* Text section */}
+                <div className="flex flex-col gap-2 p-6 pb-4">
+                  <span className="font-heading font-semibold text-4xl text-gray-900">
                     {step.num}
                   </span>
-                  <p className="font-body text-base font-semibold text-gray-900">
+                  <p className="font-body text-base font-semibold text-gray-900 mt-1">
                     {step.title}
                   </p>
                   <p className="font-body text-sm leading-relaxed text-gray-500">
                     {step.desc}
                   </p>
                 </div>
-                {/* Step image */}
-                <img
-                  src={`/images/get-help-images/card-${step.id}.png`}
-                  alt={`Step ${step.id}`}
-                  draggable="false"
-                  className="w-full rounded-2xl object-cover"
-                  style={{ height: '280px' }}
-                />
+
+                {/* Green card image — full width, 408px tall */}
+                <div className="px-4 pb-4 mt-auto">
+                  <img
+                    src={`/images/get-help-images/card-${step.id}.png`}
+                    alt={`Step ${step.id}`}
+                    draggable="false"
+                    className="w-full object-cover"
+                    style={{ height: '408px', borderRadius: '12px' }}
+                  />
+                </div>
               </div>
             ))}
           </div>

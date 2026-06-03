@@ -89,7 +89,7 @@ export default function ProviderEarnings() {
                 letterSpacing: '-0.02em',
               }}
             >
-              You control your schedule. You set your rates.<br />We connect you with customers who need your<br />skills. Fast payment, zero disputes, zero stress.
+              You control your schedule. You set your rates. We connect you with customers who need your skills. Fast payment, zero disputes, zero stress.
             </p>
             <a
               href="#"
