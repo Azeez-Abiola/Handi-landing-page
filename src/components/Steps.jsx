@@ -93,7 +93,6 @@ export default function Steps() {
   );
   const [activeStep, setActiveStep] = useState(1);
   const containerRef = useRef(null);
-  const autoRotateRef = useRef(null);
 
   /* Keep isDesktop in sync */
   useEffect(() => {
@@ -121,26 +120,8 @@ export default function Steps() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [isDesktop]);
 
-  /* Mobile: auto-rotate every 5 s, reset on click */
-  useEffect(() => {
-    if (isDesktop) {
-      clearInterval(autoRotateRef.current);
-      return;
-    }
-    autoRotateRef.current = setInterval(
-      () => setActiveStep(p => (p % 4) + 1),
-      5000
-    );
-    return () => clearInterval(autoRotateRef.current);
-  }, [isDesktop]);
-
   const handleMobileClick = id => {
     setActiveStep(id);
-    clearInterval(autoRotateRef.current);
-    autoRotateRef.current = setInterval(
-      () => setActiveStep(p => (p % 4) + 1),
-      5000
-    );
   };
 
   const Intro = () => (
