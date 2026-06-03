@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import ScrollReveal from './ScrollReveal';
 
 export default function Carousel() {
@@ -101,7 +101,10 @@ export default function Carousel() {
         {/* Header Block */}
         <ScrollReveal>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-10 mb-12">
-          <h2 className="font-heading font-medium text-3xl md:text-4xl text-gray-900 leading-[1.15] max-w-[600px] tracking-[-0.02em]">
+          <h2
+            className="font-heading text-gray-900"
+            style={{ fontWeight: 500, fontSize: '33.14px', lineHeight: '1.05', letterSpacing: '-0.02em', maxWidth: '382px' }}
+          >
             1000+ Vetted Professionals Ready to Help — Today
           </h2>
           

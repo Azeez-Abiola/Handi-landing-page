@@ -61,7 +61,17 @@ export default function Steps() {
             <h2 className="font-heading font-medium text-2xl md:text-[38px] text-gray-900 tracking-[-0.02em] mb-3">
               Get help in minutes.
             </h2>
-            <p className="font-body text-[#555] text-sm md:text-base leading-relaxed max-w-[500px]">
+            <p
+              className="text-[#555]"
+              style={{
+                fontFamily: "'Google Sans', 'Plus Jakarta Sans', sans-serif",
+                fontWeight: 400,
+                fontSize: '16px',
+                lineHeight: '1.15',
+                letterSpacing: '-0.02em',
+                maxWidth: '590px',
+              }}
+            >
               Say goodbye to unreliable artisans and surprise pricing. Handi connects you with vetted, rated professionals who show up, do the work, and get paid transparently.
             </p>
           </div>
