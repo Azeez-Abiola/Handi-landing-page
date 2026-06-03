@@ -207,8 +207,7 @@ export default function Steps() {
                   key={step.id}
                   step={step}
                   isActive={activeStep === step.id}
-                  /* Desktop cards don't have onClick or auto-rotate —
-                     scroll is the only driver */
+                  onClick={() => setActiveStep(step.id)}
                 />
               ))}
             </div>
