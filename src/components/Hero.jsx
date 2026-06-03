@@ -105,7 +105,7 @@ export default function Hero() {
         {/* Floating White Input Card — flex-col so button stays at the bottom */}
         <div className="bg-white rounded-[20px] p-8 md:p-12 w-full max-w-[800px] shadow-2xl relative z-20 mb-8 transition-all duration-300 hover:-translate-y-1 flex flex-col">
           <span className="font-body text-[#777777] text-base font-normal mb-4 block">
-            What do you need done?
+            Find Trusted Service Professionals in Lagos
           </span>
           <h1 className="font-heading font-medium text-4xl md:text-[56px] text-gray-900 leading-[1.05] tracking-[-0.02em] mb-4 min-h-[120px] md:min-h-[160px]">
             {displayText}
@@ -117,7 +117,7 @@ export default function Hero() {
               href="#"
               className="bg-dark-green text-white rounded-xl px-7 py-3.5 font-body font-semibold text-sm flex items-center gap-2.5 transition-all duration-300 hover:bg-[#03361a] hover:-translate-y-0.5"
             >
-              Get Help
+              Get Started
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
