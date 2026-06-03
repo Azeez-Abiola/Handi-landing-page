@@ -77,10 +77,10 @@ export default function ProviderEarnings() {
               FOR PROVIDERS
             </span>
             <h2 className="font-heading font-medium text-4xl md:text-[44px] text-white leading-tight mb-5 tracking-[-0.02em]">
-              Get Consistent Jobs, Without Chasing Clients.
+              Get Consistent Jobs,<br />Without Chasing Clients.
             </h2>
             <p
-              className="text-white/70 mb-10 max-w-[480px]"
+              className="text-white/70 mb-8 max-w-[480px]"
               style={{
                 fontFamily: "'Google Sans', 'Plus Jakarta Sans', sans-serif",
                 fontWeight: 400,
@@ -89,8 +89,17 @@ export default function ProviderEarnings() {
                 letterSpacing: '-0.02em',
               }}
             >
-              You control your schedule. You set your rates. We connect you with customers who need your skills. Fast payment, zero disputes, zero stress.
+              You control your schedule. You set your rates.<br />We connect you with customers who need your<br />skills. Fast payment, zero disputes, zero stress.
             </p>
+            <a
+              href="#"
+              className="inline-flex items-center gap-2.5 bg-white text-gray-900 rounded-xl px-6 py-3.5 font-body font-semibold text-sm transition-all duration-300 hover:bg-gray-100 hover:-translate-y-0.5 w-fit"
+            >
+              Start Earning with Handi
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
           </ScrollReveal>
 
           {/* List items — each slides in from left with stagger */}

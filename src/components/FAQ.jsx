@@ -78,12 +78,12 @@ export default function FAQ() {
 
         <ScrollReveal>
           {/* Tab toggle */}
-          <div className="flex gap-1 bg-white border border-gray-200 rounded-full p-1 w-fit mb-8">
+          <div className="flex gap-1 rounded-full p-1 w-fit mb-8" style={{ backgroundColor: '#EBEBE8' }}>
             <button
               onClick={() => handleTabChange('users')}
               className={`font-body text-sm font-semibold px-5 py-1.5 rounded-full transition-all duration-300 ${
                 activeTab === 'users'
-                  ? 'bg-gray-900 text-white shadow-sm'
+                  ? 'bg-white text-gray-900 shadow-sm'
                   : 'text-gray-500 hover:text-gray-900'
               }`}
             >
@@ -93,7 +93,7 @@ export default function FAQ() {
               onClick={() => handleTabChange('providers')}
               className={`font-body text-sm font-semibold px-5 py-1.5 rounded-full transition-all duration-300 ${
                 activeTab === 'providers'
-                  ? 'bg-gray-900 text-white shadow-sm'
+                  ? 'bg-white text-gray-900 shadow-sm'
                   : 'text-gray-500 hover:text-gray-900'
               }`}
             >
