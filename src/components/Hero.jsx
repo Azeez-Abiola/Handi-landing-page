@@ -167,7 +167,7 @@ export default function Hero() {
         </div>
 
         {/* Mobile-only illustration — lady seating below download buttons */}
-        <div className="block lg:hidden mt-6 w-full overflow-visible self-start" style={{ marginLeft: '-12px' }}>
+        <div className="block lg:hidden mt-1 w-full overflow-visible self-start" style={{ marginLeft: '-12px' }}>
           <img
             src="/images/illustrations/lady-seating.png"
             alt=""
