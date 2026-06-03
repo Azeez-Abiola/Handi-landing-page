@@ -108,34 +108,13 @@ export default function Carousel() {
             1000+ Vetted Professionals Ready to Help — Today
           </h2>
           
-          <div className="flex gap-3 self-end md:self-auto">
-            <button 
-              onClick={handlePrev}
-              className="border border-gray-200 bg-white text-gray-900 flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-gray-50 hover:border-gray-900 active:scale-95"
-              style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '35.3px'
-              }}
-              aria-label="Previous category"
-            >
-              <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" clipRule="evenodd" d="M0 5.31676L5.31655 0.000195503L6.0654 0.749041L2.0272 4.78725L12.7512 4.78725V5.84627L2.02721 5.84627L6.0654 9.88445L5.31655 10.6333L0 5.31676Z" fill="#888888"/>
-              </svg>
+          {/* Arrows — desktop: beside heading; hidden on mobile (shown below carousel) */}
+          <div className="hidden md:flex gap-3 self-end">
+            <button onClick={handlePrev} className="border border-gray-200 bg-white text-gray-900 flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-gray-50 hover:border-gray-900 active:scale-95" style={{ width: '32px', height: '32px', borderRadius: '35.3px' }} aria-label="Previous category">
+              <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M0 5.31676L5.31655 0.000195503L6.0654 0.749041L2.0272 4.78725L12.7512 4.78725V5.84627L2.02721 5.84627L6.0654 9.88445L5.31655 10.6333L0 5.31676Z" fill="#888888"/></svg>
             </button>
-            <button 
-              onClick={handleNext}
-              className="border border-gray-200 bg-white text-gray-900 flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-gray-50 hover:border-gray-900 active:scale-95"
-              style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '35.3px'
-              }}
-              aria-label="Next category"
-            >
-              <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg" className="rotate-180">
-                <path fillRule="evenodd" clipRule="evenodd" d="M0 5.31676L5.31655 0.000195503L6.0654 0.749041L2.0272 4.78725L12.7512 4.78725V5.84627L2.02721 5.84627L6.0654 9.88445L5.31655 10.6333L0 5.31676Z" fill="#888888"/>
-              </svg>
+            <button onClick={handleNext} className="border border-gray-200 bg-white text-gray-900 flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-gray-50 hover:border-gray-900 active:scale-95" style={{ width: '32px', height: '32px', borderRadius: '35.3px' }} aria-label="Next category">
+              <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg" className="rotate-180"><path fillRule="evenodd" clipRule="evenodd" d="M0 5.31676L5.31655 0.000195503L6.0654 0.749041L2.0272 4.78725L12.7512 4.78725V5.84627L2.02721 5.84627L6.0654 9.88445L5.31655 10.6333L0 5.31676Z" fill="#888888"/></svg>
             </button>
           </div>
         </div>
@@ -172,6 +151,16 @@ export default function Carousel() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Mobile-only arrows — below carousel, left-aligned */}
+        <div className="flex md:hidden gap-3 mt-5">
+          <button onClick={handlePrev} className="border border-gray-200 bg-white text-gray-900 flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-gray-50 hover:border-gray-900 active:scale-95" style={{ width: '40px', height: '40px', borderRadius: '50%' }} aria-label="Previous category">
+            <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M0 5.31676L5.31655 0.000195503L6.0654 0.749041L2.0272 4.78725L12.7512 4.78725V5.84627L2.02721 5.84627L6.0654 9.88445L5.31655 10.6333L0 5.31676Z" fill="#888888"/></svg>
+          </button>
+          <button onClick={handleNext} className="border border-gray-200 bg-white text-gray-900 flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-gray-50 hover:border-gray-900 active:scale-95" style={{ width: '40px', height: '40px', borderRadius: '50%' }} aria-label="Next category">
+            <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg" className="rotate-180"><path fillRule="evenodd" clipRule="evenodd" d="M0 5.31676L5.31655 0.000195503L6.0654 0.749041L2.0272 4.78725L12.7512 4.78725V5.84627L2.02721 5.84627L6.0654 9.88445L5.31655 10.6333L0 5.31676Z" fill="#888888"/></svg>
+          </button>
         </div>
 
       </div>

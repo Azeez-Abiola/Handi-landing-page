@@ -20,7 +20,6 @@ export default function Hero() {
 
     const typeLoop = () => {
       const currentPhrase = phrases[phraseIndex];
-
       if (isDeleting) {
         setDisplayText(currentPhrase.substring(0, charIndex - 1));
         charIndex--;
@@ -30,7 +29,6 @@ export default function Hero() {
         charIndex++;
         typingSpeed = 60;
       }
-
       if (!isDeleting && charIndex === currentPhrase.length) {
         isDeleting = true;
         timer = setTimeout(typeLoop, pauseTime);
@@ -48,9 +46,9 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="bg-hero-bg min-h-screen lg:min-h-[920px] pt-32 pb-16 flex items-start justify-center relative overflow-hidden">
+    <section className="bg-hero-bg min-h-screen lg:min-h-[920px] pt-32 pb-0 lg:pb-16 flex items-start justify-center relative overflow-hidden">
 
-      {/* Background Ornament — moved down so download buttons sit on it */}
+      {/* Background Ornament */}
       <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[1440px] h-full pointer-events-none z-0 overflow-visible">
         <div
           className="absolute pointer-events-none opacity-100 animate-pulse duration-4000"
@@ -67,47 +65,49 @@ export default function Hero() {
         />
       </div>
 
-      {/* Illustrations — z-30 (in front of card), bottom-anchored */}
+      {/* Desktop-only illustrations */}
       <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[1440px] pointer-events-none z-30 overflow-visible hidden lg:block">
-        {/* Painter - Left */}
         <img
           src="/images/illustrations/painter.png"
           alt="Handi Painter"
-          className="absolute transition-all duration-500"
-          style={{
-            width: '800px',
-            height: '760px',
-            bottom: 0,
-            left: '-60px',
-            opacity: 1,
-            objectFit: 'contain',
-            objectPosition: 'bottom'
-          }}
+          className="absolute"
+          style={{ width: '800px', height: '760px', bottom: 0, left: '-60px', objectFit: 'contain', objectPosition: 'bottom' }}
         />
-        {/* Lady Seating - Right */}
         <img
           src="/images/illustrations/lady-seating.png"
           alt="Handi Lady Seating"
-          className="absolute transition-all duration-500"
-          style={{
-            width: '580px',
-            height: '620px',
-            bottom: 0,
-            left: '890px',
-            opacity: 1,
-            objectFit: 'contain',
-            objectPosition: 'bottom'
-          }}
+          className="absolute"
+          style={{ width: '580px', height: '620px', bottom: 0, left: '890px', objectFit: 'contain', objectPosition: 'bottom' }}
         />
       </div>
 
       <div className="max-w-[1200px] mx-auto px-6 z-20 flex flex-col items-center w-full">
-        {/* Floating White Input Card — flex-col so button stays at the bottom */}
+
+        {/* Floating White Card */}
         <div className="bg-white rounded-[20px] p-8 md:p-12 w-full max-w-[800px] shadow-2xl relative z-20 mb-8 transition-all duration-300 hover:-translate-y-1 flex flex-col">
-          <span className="font-body text-[#777777] text-base font-normal mb-4 block">
+
+          {/* Label — 14px on mobile, 16px on desktop */}
+          <span
+            className="text-[#777777] font-normal mb-4 block"
+            style={{
+              fontFamily: "'Google Sans', 'Plus Jakarta Sans', sans-serif",
+              fontSize: '14px',
+              lineHeight: '1.2',
+              letterSpacing: '-0.02em',
+            }}
+          >
             Find Trusted Service Professionals in Lagos
           </span>
-          <h1 className="font-heading font-medium text-4xl md:text-[56px] text-gray-900 leading-[1.05] tracking-[-0.02em] mb-4 min-h-[120px] md:min-h-[160px]">
+
+          {/* Typing h1 — 32px on mobile, 56px on desktop, no forced breaks */}
+          <h1
+            className="font-heading font-medium text-gray-900 tracking-[-0.02em] mb-4"
+            style={{
+              fontSize: 'clamp(32px, 5vw, 56px)',
+              lineHeight: '1.05',
+              minHeight: 'clamp(100px, 12vw, 160px)',
+            }}
+          >
             {displayText}
             <span className="caret"></span>
           </h1>
@@ -125,7 +125,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Bottom Subtext */}
+        {/* Subtext */}
         <p
           className="text-white text-center mb-8"
           style={{
@@ -140,23 +140,42 @@ export default function Hero() {
           No more WhatsApp messages. No surprise charges. No flaky artisans. Just reliable professionals rated by real customers, available when you need them.
         </p>
 
-        {/* App Store Badges */}
-        <div className="flex flex-col sm:flex-row gap-3 z-30">
-          <a href="#" className="bg-white text-gray-900 border border-gray-100 flex items-center h-[44px] rounded-xl overflow-hidden transition-all duration-300 hover:bg-gray-50 hover:-translate-y-0.5 shadow-md w-full sm:w-[245px]">
-            <span className="flex-1 px-[15px] font-body font-semibold text-xs leading-none">Download on the App Store</span>
+        {/* App Store Badges — specific widths on all screen sizes, centered stack on mobile */}
+        <div className="flex flex-col items-center sm:flex-row gap-3 z-30">
+          <a
+            href="#"
+            className="bg-white text-gray-900 border border-gray-100 flex items-center overflow-hidden transition-all duration-300 hover:bg-gray-50 hover:-translate-y-0.5 shadow-md shrink-0"
+            style={{ width: '245px', height: '44px', borderRadius: '12px', gap: '12px' }}
+          >
+            <span className="flex-1 pl-[15px] font-body font-semibold text-xs leading-none">Download on the App Store</span>
             <div className="w-px self-stretch bg-gray-200 shrink-0" />
             <div className="w-11 flex items-center justify-center shrink-0">
               <img src="/apple-icon.png" alt="Apple" className="w-[18px] h-auto object-contain" />
             </div>
           </a>
-          <a href="#" className="text-white border border-white/10 flex items-center h-[44px] rounded-xl overflow-hidden transition-all duration-300 hover:bg-black/80 hover:-translate-y-0.5 shadow-md w-full sm:w-[206px]" style={{ backgroundColor: '#1E1E20' }}>
-            <span className="flex-1 px-[15px] font-body font-semibold text-xs leading-none">Get it on Google Play</span>
+          <a
+            href="#"
+            className="text-white border border-white/10 flex items-center overflow-hidden transition-all duration-300 hover:bg-black/80 hover:-translate-y-0.5 shadow-md shrink-0"
+            style={{ width: '206px', height: '44px', borderRadius: '12px', gap: '12px', backgroundColor: '#1E1E20' }}
+          >
+            <span className="flex-1 pl-[15px] font-body font-semibold text-xs leading-none">Get it on Google Play</span>
             <div className="w-px self-stretch bg-white/15 shrink-0" />
             <div className="w-11 flex items-center justify-center shrink-0">
               <img src="/googleplay-icon.png" alt="Google Play" className="w-[18px] h-auto object-contain" />
             </div>
           </a>
         </div>
+
+        {/* Mobile-only illustration — lady seating below download buttons */}
+        <div className="block lg:hidden mt-6 w-full overflow-visible self-start" style={{ marginLeft: '-12px' }}>
+          <img
+            src="/images/illustrations/lady-seating.png"
+            alt=""
+            draggable="false"
+            style={{ width: '484px', height: '518px', objectFit: 'contain', objectPosition: 'bottom left' }}
+          />
+        </div>
+
       </div>
     </section>
   );
