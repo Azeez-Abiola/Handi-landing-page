@@ -120,10 +120,6 @@ export default function Steps() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [isDesktop]);
 
-  const handleMobileClick = id => {
-    setActiveStep(id);
-  };
-
   const Intro = () => (
     <div className="mb-8 md:mb-12">
       <h2 className="font-heading font-medium text-2xl md:text-[38px] text-gray-900 tracking-[-0.02em] mb-3">
@@ -147,32 +143,37 @@ export default function Steps() {
     </div>
   );
 
-  /* ── MOBILE ── */
+  /* ── MOBILE: each step full-width with its own image ── */
   if (!isDesktop) {
     return (
       <section className="bg-white pt-20 pb-16">
         <div className="max-w-[1380px] mx-auto px-6">
           <Intro />
-          <div className="flex flex-col gap-4 border border-gray-200 rounded-xl overflow-hidden bg-[#F5F5F5]">
-            <div className="grid grid-cols-2 gap-[10px] p-[9px]">
-              {stepsData.map(step => (
-                <StepCard
-                  key={step.id}
-                  step={step}
-                  isActive={activeStep === step.id}
-                  onClick={() => handleMobileClick(step.id)}
-                  mobile
+          <div className="flex flex-col gap-6">
+            {stepsData.map(step => (
+              <div key={step.id} className="flex flex-col gap-3">
+                {/* Step info card */}
+                <div className="flex flex-col gap-2">
+                  <span className="font-heading font-semibold text-3xl text-gray-900">
+                    {step.num}
+                  </span>
+                  <p className="font-body text-base font-semibold text-gray-900">
+                    {step.title}
+                  </p>
+                  <p className="font-body text-sm leading-relaxed text-gray-500">
+                    {step.desc}
+                  </p>
+                </div>
+                {/* Step image */}
+                <img
+                  src={`/images/get-help-images/card-${step.id}.png`}
+                  alt={`Step ${step.id}`}
+                  draggable="false"
+                  className="w-full rounded-2xl object-cover"
+                  style={{ height: '280px' }}
                 />
-              ))}
-            </div>
-            <div className="h-px bg-gray-200 mx-[9px]" />
-            <div className="p-[9px]">
-              <StepImage
-                activeStep={activeStep}
-                className="w-full rounded-xl object-cover"
-                style={{ height: '280px' }}
-              />
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
