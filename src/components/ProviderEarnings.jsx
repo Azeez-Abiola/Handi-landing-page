@@ -93,7 +93,17 @@ export default function ProviderEarnings() {
             </p>
             <a
               href="#"
-              className="inline-flex items-center gap-2.5 bg-white text-gray-900 rounded-xl px-6 py-3.5 font-body font-semibold text-sm transition-all duration-300 hover:bg-gray-100 hover:-translate-y-0.5 w-fit"
+              className="inline-flex items-center font-body font-semibold text-sm text-gray-900 bg-white border border-white/30 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-0.5"
+              style={{
+                width: '221px',
+                height: '44px',
+                borderRadius: '12px',
+                paddingTop: '9px',
+                paddingBottom: '9px',
+                paddingLeft: '15.04px',
+                paddingRight: '15.04px',
+                gap: '12px',
+              }}
             >
               Start Earning with Handi
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

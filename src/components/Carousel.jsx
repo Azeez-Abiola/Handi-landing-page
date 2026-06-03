@@ -9,10 +9,10 @@ export default function Carousel() {
 
   const categories = [
     { name: "Cleaning", img: "/images/handi-img1.png" },
-    { name: "Handyman", img: "/images/handi-img2.png" },
-    { name: "Beauty", img: "/images/handi-img3.png" },
+    { name: "General Repairs", img: "/images/handi-img2.png" },
+    { name: "Home Beauty Services", img: "/images/handi-img3.png" },
     { name: "Plumbing", img: "/images/handi-img4.png" },
-    { name: "Electricals", img: "/images/handi-img5.png" }
+    { name: "Electrical Repairs", img: "/images/handi-img5.png" }
   ];
 
   const scrollAmount = 315; // card width (291px) + gap (24px)

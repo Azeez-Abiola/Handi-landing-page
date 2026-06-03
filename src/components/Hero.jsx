@@ -127,8 +127,9 @@ export default function Hero() {
 
         {/* Bottom Subtext */}
         <p
-          className="text-white text-center max-w-[480px] mb-8"
+          className="text-white text-center mb-8"
           style={{
+            maxWidth: '381px',
             fontFamily: "'Google Sans', 'Plus Jakarta Sans', sans-serif",
             fontWeight: 400,
             fontSize: '16px',

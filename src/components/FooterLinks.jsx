@@ -79,28 +79,31 @@ export default function FooterLinks() {
     <footer className="bg-black select-none">
       <div className="max-w-[1200px] mx-auto px-6 py-14 flex flex-col lg:flex-row justify-between gap-12">
 
-        {/* Brand */}
-        <div className="flex items-center gap-2 shrink-0 self-start">
-          <img
-            src="/images/handi-logo-light-green.png"
-            alt="Handi Logo"
-            className="h-6 w-auto object-contain"
-          />
-          <span
-            className="text-white"
-            style={{
-              fontFamily: "'Google Sans Flex', 'Plus Jakarta Sans', sans-serif",
-              fontWeight: 500,
-              fontSize: '18px',
-              letterSpacing: '-0.01em',
-            }}
-          >
-            Handi
-          </span>
+        {/* Brand + copyright stacked */}
+        <div className="flex flex-col gap-4 shrink-0">
+          <div className="flex items-center gap-2">
+            <img
+              src="/images/handi-logo-light-green.png"
+              alt="Handi Logo"
+              className="h-6 w-auto object-contain"
+            />
+            <span
+              className="text-white"
+              style={{
+                fontFamily: "'Google Sans Flex', 'Plus Jakarta Sans', sans-serif",
+                fontWeight: 500,
+                fontSize: '18px',
+                letterSpacing: '-0.01em',
+              }}
+            >
+              Handi
+            </span>
+          </div>
+          <span className="font-body text-xs text-white">© 2026 Handi. All rights reserved.</span>
         </div>
 
         {/* Link columns */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 flex-1">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
 
           {navColumns.map((col) => (
             <div key={col.heading} className="flex flex-col gap-4">
@@ -159,13 +162,6 @@ export default function FooterLinks() {
           </div>
 
         </div>
-      </div>
-
-      {/* Bottom strip */}
-      <div className="border-t border-white/10 py-5 px-6">
-        <p className="max-w-[1200px] mx-auto font-body text-xs text-white/30 text-center">
-          © 2026 Handi Digital Services LTD. All rights reserved.
-        </p>
       </div>
 
     </footer>

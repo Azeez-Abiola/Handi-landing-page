@@ -6,21 +6,33 @@ const testimonials = [
     quote: "My AC broke on a Friday afternoon. I posted on Handi at 4:30 PM. A technician arrived by 5:15 PM and fixed it the same day. No guessing, no waiting days for a call back. 10/10.",
     name: "AjaNwachuku, M.A.",
     location: "Victoria Island, Lagos.",
-    avatar: "/images/handi-img1.png",
   },
   {
     quote: "I needed a plumber urgently and Handi connected me with one in under 20 minutes. Professional, fair price, job done clean. This is exactly what Lagos needed.",
     name: "Chisom O.",
     location: "Lekki Phase 1, Lagos.",
-    avatar: "/images/handi-img2.png",
   },
   {
     quote: "Used Handi to get my apartment deep-cleaned before my family arrived. The cleaner showed up on time, did a fantastic job, and the payment process was seamless.",
     name: "Femi A.",
     location: "Ikeja GRA, Lagos.",
-    avatar: "/images/handi-img3.png",
   },
 ];
+
+const ArrowBtn = ({ onClick, direction, label }) => (
+  <button
+    onClick={onClick}
+    aria-label={label}
+    className="w-8 h-8 rounded-full border border-white/30 bg-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white/20 active:scale-95 shrink-0"
+  >
+    <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {direction === 'prev'
+        ? <path fillRule="evenodd" clipRule="evenodd" d="M0 5.31676L5.31655 0.000195503L6.0654 0.749041L2.0272 4.78725L12.7512 4.78725V5.84627L2.02721 5.84627L6.0654 9.88445L5.31655 10.6333L0 5.31676Z" fill="white"/>
+        : <path fillRule="evenodd" clipRule="evenodd" d="M12.7512 5.31676L7.43465 0.000195503L6.6858 0.749041L10.724 4.78725L0 4.78725V5.84627L10.7240 5.84627L6.6858 9.88445L7.43465 10.6333L12.7512 5.31676Z" fill="white"/>
+      }
+    </svg>
+  </button>
+);
 
 export default function Testimonial() {
   const [active, setActive] = useState(0);
@@ -32,10 +44,9 @@ export default function Testimonial() {
 
   return (
     <section className="bg-hero-bg text-white py-20 relative overflow-hidden select-none">
-      <div className="max-w-[1200px] mx-auto px-6 z-10 relative flex flex-row items-center justify-between gap-8">
+      <div className="max-w-[1200px] mx-auto px-6 z-10 relative">
+        <ScrollReveal className="flex flex-col">
 
-        {/* Content */}
-        <ScrollReveal className="flex flex-col flex-1">
           {/* Quote icon */}
           <div className="text-white mb-6">
             <svg width="65" height="50" viewBox="0 0 65 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,7 +62,7 @@ export default function Testimonial() {
               fontFamily: "'Neue Montreal', 'Plus Jakarta Sans', sans-serif",
               fontWeight: 500,
               fontSize: '32px',
-              lineHeight: '1.0',
+              lineHeight: '1.2',
               letterSpacing: '0.01em',
               maxWidth: '861px',
             }}
@@ -59,47 +70,21 @@ export default function Testimonial() {
             {t.quote}
           </p>
 
-          {/* Author — below the quote */}
-          <div
-            key={`author-${active}`}
-            className="flex items-center gap-[5.76px] fade-swap"
-            style={{ width: '150px' }}
-          >
-            <img
-              src={t.avatar}
-              alt={t.name}
-              className="w-9 h-9 rounded-full border border-white/20 object-cover bg-white/10 shrink-0"
-              draggable="false"
-            />
-            <div className="flex flex-col">
-              <span className="font-body text-[13px] font-bold text-white leading-tight">{t.name}</span>
+          {/* Author row + arrows */}
+          <div className="flex items-center justify-between gap-6 max-w-[861px]">
+            <div key={`author-${active}`} className="flex flex-col gap-[5.76px] fade-swap">
+              <span className="font-body text-[13px] font-bold text-white whitespace-nowrap leading-tight">{t.name}</span>
               <span className="font-body text-[10px] text-white/70 leading-tight">{t.location}</span>
             </div>
+
+            {/* Navigation arrows — same style as carousel */}
+            <div className="flex gap-3">
+              <ArrowBtn onClick={prev} direction="prev" label="Previous testimonial" />
+              <ArrowBtn onClick={next} direction="next" label="Next testimonial" />
+            </div>
           </div>
+
         </ScrollReveal>
-
-        {/* Navigation arrows */}
-        <div className="flex gap-2 shrink-0 self-center">
-          <button
-            onClick={prev}
-            aria-label="Previous testimonial"
-            className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center transition-all duration-300 hover:bg-white/20 active:scale-95"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 3L5 8L10 13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-          <button
-            onClick={next}
-            aria-label="Next testimonial"
-            className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center transition-all duration-300 hover:bg-white/20 active:scale-95"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 3L11 8L6 13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-        </div>
-
       </div>
     </section>
   );
