@@ -12,7 +12,7 @@ export function useInView(threshold = 0.12) {
       ([entry]) => {
         setInView(entry.isIntersecting);
       },
-      { threshold, rootMargin: '0px 0px -30px 0px' }
+      { threshold }
     );
 
     observer.observe(el);
