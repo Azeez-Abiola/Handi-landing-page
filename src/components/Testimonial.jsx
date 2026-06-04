@@ -57,21 +57,18 @@ export default function Testimonial() {
           {/* Quote text */}
           <p
             key={active}
-            className="text-white mb-8 fade-swap"
+            className="text-white mb-8 fade-swap text-[24px] leading-none md:text-[32px] md:leading-[1.2] max-w-[367px] md:max-w-[861px]"
             style={{
               fontFamily: "'Neue Montreal', 'Plus Jakarta Sans', sans-serif",
               fontWeight: 500,
-              fontSize: '32px',
-              lineHeight: '1.2',
               letterSpacing: '0.01em',
-              maxWidth: '861px',
             }}
           >
             {t.quote}
           </p>
 
           {/* Author row + arrows */}
-          <div className="flex items-center justify-between gap-6 max-w-[861px]">
+          <div className="flex items-center justify-between gap-6 w-full">
             <div key={`author-${active}`} className="flex flex-col gap-[5.76px] fade-swap">
               <span className="font-body text-[13px] font-bold text-white whitespace-nowrap leading-tight">{t.name}</span>
               <span className="font-body text-[10px] text-white/70 leading-tight">{t.location}</span>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import ScrollReveal from './ScrollReveal';
 
 const stepsData = [
   {
@@ -168,41 +169,42 @@ export default function Steps() {
           </div>
 
           <div className="flex flex-col gap-4">
-            {stepsData.map(step => (
-              <div
-                key={step.id}
-                className="flex flex-col overflow-hidden w-full"
-                style={{
-                  minHeight: '594px',
-                  backgroundColor: '#F8F8F8',
-                  border: '1px solid #F0F0F0',
-                  borderRadius: '16px',
-                }}
-              >
-                {/* Text section */}
-                <div className="flex flex-col gap-2 p-6 pb-4">
-                  <span className="font-heading font-semibold text-4xl text-gray-900">
-                    {step.num}
-                  </span>
-                  <p className="font-body text-base font-semibold text-gray-900 mt-1">
-                    {step.title}
-                  </p>
-                  <p className="font-body text-sm leading-relaxed text-gray-500">
-                    {step.desc}
-                  </p>
-                </div>
+            {stepsData.map((step, idx) => (
+              <ScrollReveal key={step.id} direction={idx % 2 === 0 ? 'left' : 'right'}>
+                <div
+                  className="flex flex-col overflow-hidden w-full"
+                  style={{
+                    minHeight: '594px',
+                    backgroundColor: '#F8F8F8',
+                    border: '1px solid #F0F0F0',
+                    borderRadius: '16px',
+                  }}
+                >
+                  {/* Text section */}
+                  <div className="flex flex-col gap-2 p-6 pb-4">
+                    <span className="font-heading font-semibold text-4xl text-gray-900">
+                      {step.num}
+                    </span>
+                    <p className="font-body text-base font-semibold text-gray-900 mt-1">
+                      {step.title}
+                    </p>
+                    <p className="font-body text-sm leading-relaxed text-gray-500">
+                      {step.desc}
+                    </p>
+                  </div>
 
-                {/* Green card image — full width, 408px tall */}
-                <div className="px-4 pb-4 mt-auto">
-                  <img
-                    src={`/images/get-help-images/card-${step.id}.png`}
-                    alt={`Step ${step.id}`}
-                    draggable="false"
-                    className="w-full object-cover"
-                    style={{ height: '408px', borderRadius: '12px' }}
-                  />
+                  {/* Green card image — full width, 408px tall */}
+                  <div className="px-4 pb-4 mt-auto">
+                    <img
+                      src={`/images/get-help-images/card-${step.id}.png`}
+                      alt={`Step ${step.id}`}
+                      draggable="false"
+                      className="w-full object-cover"
+                      style={{ height: '408px', borderRadius: '12px' }}
+                    />
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

@@ -13,7 +13,7 @@ export default function Hero() {
   useEffect(() => {
     let phraseIndex = 0;
     let charIndex = phrases[0].length;
-    let isDeleting = false;
+    let isDeleting = true;
     let typingSpeed = 60;
     const pauseTime = 3000;
     let timer;
@@ -147,7 +147,7 @@ export default function Hero() {
             className="bg-white text-gray-900 border border-gray-100 flex items-center overflow-hidden transition-all duration-300 hover:bg-gray-50 hover:-translate-y-0.5 shadow-md shrink-0"
             style={{ width: '245px', height: '44px', borderRadius: '12px', gap: '12px' }}
           >
-            <span className="flex-1 pl-[15px] font-body font-semibold text-xs leading-none">Download on the App Store</span>
+            <span className="flex-1 pl-[15px] font-body font-semibold text-xs leading-none whitespace-nowrap">Download on the App Store</span>
             <div className="w-px self-stretch bg-gray-200 shrink-0" />
             <div className="w-11 flex items-center justify-center shrink-0">
               <img src="/apple-icon.png" alt="Apple" className="w-[18px] h-auto object-contain" />
@@ -156,9 +156,9 @@ export default function Hero() {
           <a
             href="#"
             className="text-white border border-white/10 flex items-center overflow-hidden transition-all duration-300 hover:bg-black/80 hover:-translate-y-0.5 shadow-md shrink-0"
-            style={{ width: '206px', height: '44px', borderRadius: '12px', gap: '12px', backgroundColor: '#1E1E20' }}
+            style={{ width: '215px', height: '44px', borderRadius: '12px', gap: '12px', backgroundColor: '#1E1E20' }}
           >
-            <span className="flex-1 pl-[15px] font-body font-semibold text-xs leading-none">Get it on Google Play</span>
+            <span className="flex-1 pl-[15px] font-body font-semibold text-xs leading-none whitespace-nowrap">Get it on Google Play</span>
             <div className="w-px self-stretch bg-white/15 shrink-0" />
             <div className="w-11 flex items-center justify-center shrink-0">
               <img src="/googleplay-icon.png" alt="Google Play" className="w-[18px] h-auto object-contain" />
@@ -167,7 +167,7 @@ export default function Hero() {
         </div>
 
         {/* Mobile-only illustration — lady seating below download buttons */}
-        <div className="block lg:hidden mt-1 w-full overflow-visible self-start" style={{ marginLeft: '-12px' }}>
+        <div className="block lg:hidden -mt-28 w-full overflow-visible self-start" style={{ marginLeft: '-12px' }}>
           <img
             src="/images/illustrations/lady-seating.png"
             alt=""
