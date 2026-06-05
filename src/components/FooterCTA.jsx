@@ -1,6 +1,6 @@
 import ScrollReveal from './ScrollReveal';
 
-export default function FooterCTA() {
+export default function FooterCTA({ line1 = 'Ready to fix it?', line2 = 'Download Handi now.' }) {
   const images = [
     "/images/handi-img1.png",
     "/images/handi-img2.png",
@@ -36,7 +36,7 @@ export default function FooterCTA() {
           className="font-heading font-medium text-3xl md:text-[40px] leading-tight text-white mb-8 tracking-[-0.02em]"
           style={{ maxWidth: '381px' }}
         >
-          Ready to fix it?<br />Download Handi now.
+          {line1}<br />{line2}
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

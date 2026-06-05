@@ -11,6 +11,11 @@ import FooterCTA from './components/FooterCTA';
 import FooterLinks from './components/FooterLinks';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Terms from './pages/Terms';
+import About from './pages/About';
+import Careers from './pages/Careers';
+import JobDetail from './pages/JobDetail';
+import Blog from './pages/Blog';
+import Contact from './pages/Contact';
 
 function LandingPage() {
   return (
@@ -34,6 +39,11 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/careers/:slug" element={<JobDetail />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
       </Routes>
