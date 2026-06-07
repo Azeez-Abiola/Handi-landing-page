@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { openCustomerApp, storeLink } from '../lib/appLinks';
 
 export default function Hero() {
   const [displayText, setDisplayText] = useState("I need someone to fix my air-conditioning today in Yaba.");
@@ -113,15 +114,16 @@ export default function Hero() {
           </h1>
 
           <div className="flex justify-end mt-8">
-            <a
-              href="#"
+            <button
+              type="button"
+              onClick={openCustomerApp}
               className="bg-dark-green text-white rounded-xl px-7 py-3.5 font-body font-semibold text-sm flex items-center gap-2.5 transition-all duration-300 hover:bg-[#03361a] hover:-translate-y-0.5"
             >
               Get Started
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </a>
+            </button>
           </div>
         </div>
 
@@ -143,7 +145,9 @@ export default function Hero() {
         {/* App Store Badges — specific widths on all screen sizes, centered stack on mobile */}
         <div className="flex flex-col items-center sm:flex-row gap-3 z-30">
           <a
-            href="#"
+            href={storeLink('customer', 'ios')}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white text-gray-900 border border-gray-100 flex items-center overflow-hidden transition-all duration-300 hover:bg-gray-50 hover:-translate-y-0.5 shadow-md shrink-0"
             style={{ width: '245px', height: '44px', borderRadius: '12px', gap: '12px' }}
           >
@@ -154,7 +158,9 @@ export default function Hero() {
             </div>
           </a>
           <a
-            href="#"
+            href={storeLink('customer', 'android')}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-white border border-white/10 flex items-center overflow-hidden transition-all duration-300 hover:bg-black/80 hover:-translate-y-0.5 shadow-md shrink-0"
             style={{ width: '215px', height: '44px', borderRadius: '12px', gap: '12px', backgroundColor: '#1E1E20' }}
           >

@@ -1,4 +1,5 @@
 import ScrollReveal from './ScrollReveal';
+import { openCustomerApp, openProviderApp } from '../lib/appLinks';
 
 export default function FooterCTA({ line1 = 'Ready to fix it?', line2 = 'Download Handi now.' }) {
   const images = [
@@ -40,8 +41,9 @@ export default function FooterCTA({ line1 = 'Ready to fix it?', line2 = 'Downloa
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href="#"
+          <button
+            type="button"
+            onClick={openCustomerApp}
             className="bg-[#0C9348] text-white font-body font-semibold text-sm flex items-center justify-center transition-all duration-300 hover:bg-[#096a34] hover:-translate-y-0.5"
             style={{ width: '135px', height: '44px', borderRadius: '12px', paddingTop: '9px', paddingBottom: '9px', paddingLeft: '15.04px', paddingRight: '15.04px', gap: '12px' }}
           >
@@ -49,9 +51,10 @@ export default function FooterCTA({ line1 = 'Ready to fix it?', line2 = 'Downloa
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </a>
-          <a
-            href="#"
+          </button>
+          <button
+            type="button"
+            onClick={openProviderApp}
             className="bg-white text-gray-900 font-body font-semibold text-sm flex items-center justify-center border transition-all duration-300 hover:bg-gray-100 hover:-translate-y-0.5"
             style={{ width: '203px', height: '44px', borderRadius: '12px', paddingTop: '9px', paddingBottom: '9px', paddingLeft: '15.04px', paddingRight: '15.04px', gap: '12px', borderWidth: '1px' }}
           >
@@ -59,7 +62,7 @@ export default function FooterCTA({ line1 = 'Ready to fix it?', line2 = 'Downloa
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </a>
+          </button>
         </div>
       </ScrollReveal>
 

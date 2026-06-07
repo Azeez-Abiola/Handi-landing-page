@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { openCustomerApp, openProviderApp } from '../lib/appLinks';
 
 const navLinks = [
   { label: 'About', to: '/about' },
@@ -52,18 +53,20 @@ export default function Navbar({ variant = 'dark' }) {
 
         {/* CTA buttons — desktop */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
-          <a
-            href="#"
+          <button
+            type="button"
+            onClick={openCustomerApp}
             className="bg-dark-green text-white font-body font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 hover:bg-[#03361a] hover:-translate-y-0.5"
           >
             Post a Task
-          </a>
-          <a
-            href="#"
+          </button>
+          <button
+            type="button"
+            onClick={openProviderApp}
             className={`font-body font-semibold text-sm px-5 py-2.5 rounded-xl border transition-all duration-300 hover:-translate-y-0.5 ${light ? 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50' : 'bg-white text-gray-900 border-white/30 hover:bg-gray-100'}`}
           >
             Earn Money on Handi
-          </a>
+          </button>
         </div>
 
         {/* Hamburger — mobile */}
@@ -100,12 +103,12 @@ export default function Navbar({ variant = 'dark' }) {
             </Link>
           ))}
           <div className="flex flex-col gap-3 mt-3 pt-4 border-t border-white/10">
-            <a href="#" className="bg-[#0C9348] text-white text-center font-body font-semibold text-sm px-5 py-3 rounded-xl">
+            <button type="button" onClick={() => { setOpen(false); openCustomerApp(); }} className="bg-[#0C9348] text-white text-center font-body font-semibold text-sm px-5 py-3 rounded-xl">
               Post a Task
-            </a>
-            <a href="#" className="bg-white text-gray-900 text-center font-body font-semibold text-sm px-5 py-3 rounded-xl">
+            </button>
+            <button type="button" onClick={() => { setOpen(false); openProviderApp(); }} className="bg-white text-gray-900 text-center font-body font-semibold text-sm px-5 py-3 rounded-xl">
               Earn Money on Handi
-            </a>
+            </button>
           </div>
         </div>
       )}

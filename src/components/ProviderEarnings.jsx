@@ -1,4 +1,5 @@
 import ScrollReveal from './ScrollReveal';
+import { openProviderApp } from '../lib/appLinks';
 
 const listItems = [
   { title:"Steady Work", desc:"Get 3-10 active jobs per week, no more waiting for referrals.", icon:(<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.16602 6.66675H4.99935M14.9993 13.3334H15.8327M11.666 10.0001C11.666 10.9206 10.9198 11.6667 9.99935 11.6667C9.07887 11.6667 8.33268 10.9206 8.33268 10.0001C8.33268 9.07961 9.07887 8.33341 9.99935 8.33341C10.9198 8.33341 11.666 9.07961 11.666 10.0001ZM1.66602 13.3334V6.66675C1.66602 5.28604 2.7853 4.16675 4.16602 4.16675H15.8327C17.2134 4.16675 18.3327 5.28604 18.3327 6.66675V13.3334C18.3327 14.7141 17.2134 15.8334 15.8327 15.8334H4.16602C2.7853 15.8334 1.66602 14.7141 1.66602 13.3334Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>) },
@@ -41,10 +42,10 @@ export default function ProviderEarnings() {
             <p className="text-white/70 mb-8 max-w-[480px]" style={{fontFamily:"'Google Sans', 'Plus Jakarta Sans', sans-serif",fontWeight:400,fontSize:'16px',lineHeight:'1.15',letterSpacing:'-0.02em'}}>
               You control your schedule. You set your rates. We connect you with customers who need your skills. Fast payment, zero disputes, zero stress.
             </p>
-            <a href="#" className="inline-flex items-center font-body font-semibold text-sm text-gray-900 bg-white border border-white/30 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-0.5" style={{width:'221px',height:'44px',borderRadius:'12px',paddingTop:'9px',paddingBottom:'9px',paddingLeft:'15.04px',paddingRight:'15.04px',gap:'12px'}}>
+            <button type="button" onClick={openProviderApp} className="inline-flex items-center font-body font-semibold text-sm text-gray-900 bg-white border border-white/30 transition-all duration-300 hover:bg-gray-100 hover:-translate-y-0.5" style={{width:'221px',height:'44px',borderRadius:'12px',paddingTop:'9px',paddingBottom:'9px',paddingLeft:'15.04px',paddingRight:'15.04px',gap:'12px'}}>
               Start Earning with Handi
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </a>
+            </button>
           </ScrollReveal>
           {/* List — desktop only */}
           <div className="hidden lg:block"><ListItems /></div>
