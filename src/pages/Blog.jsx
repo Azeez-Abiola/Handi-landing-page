@@ -25,8 +25,8 @@ export default function Blog() {
       <Navbar />
 
       {/* Hero + featured post */}
-      <section className="bg-hero-bg pt-32 md:pt-36 pb-12 px-6">
-        <div className="max-w-[1280px] mx-auto">
+      <section className="bg-hero-bg pt-32 md:pt-36 pb-0 px-6">
+        <div className="max-w-[1313px] mx-auto">
           <ScrollReveal>
             <h1 className="font-heading font-medium text-4xl md:text-[52px] text-white leading-[1.05] tracking-[-0.02em] mb-3">
               The Handi Blog
@@ -36,11 +36,15 @@ export default function Blog() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal>
-            <div className="bg-[#044422] rounded-[24px] p-6 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <ScrollReveal className="relative z-10 mb-[-40px] md:mb-[-44px]">
+            <div className="bg-[#044422] rounded-[16px] p-6 md:p-8 lg:min-h-[489px] grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
               <div className="flex flex-col justify-between min-h-[280px]">
                 <div>
                   <span className="font-body text-xs font-semibold uppercase tracking-wider text-[#00F676] mb-4 block">Latest Post</span>
+                  {/* Mobile image — sits between label and title */}
+                  <div className="lg:hidden rounded-2xl bg-[#06C167] aspect-[16/10] mb-5 flex items-center justify-center">
+                    <span className="font-body text-xs text-white/40">Image</span>
+                  </div>
                   <h2 className="font-heading font-semibold text-2xl md:text-3xl text-white mb-3">[Blog Title]</h2>
                   <p className="font-body text-sm text-white/60 mb-4">[Blog subheading + summary]</p>
                   <Meta />
@@ -50,8 +54,8 @@ export default function Blog() {
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </button>
               </div>
-              {/* Featured image placeholder */}
-              <div className="rounded-2xl bg-[#06C167] min-h-[260px] flex items-center justify-center">
+              {/* Featured image — desktop only (right column) */}
+              <div className="hidden lg:flex rounded-2xl bg-[#06C167] min-h-[260px] items-center justify-center">
                 <span className="font-body text-xs text-white/40">Image</span>
               </div>
             </div>
@@ -60,15 +64,15 @@ export default function Blog() {
       </section>
 
       {/* Filters + grid */}
-      <section className="bg-white py-12 md:py-16 px-6">
+      <section className="bg-white pt-20 md:pt-28 pb-12 md:pb-16 px-6">
         <div className="max-w-[1280px] mx-auto">
           {/* Category tabs */}
-          <div className="flex flex-wrap items-center gap-x-7 gap-y-3 mb-10 border-b border-gray-100 pb-4">
+          <div className="flex items-center gap-x-7 mb-10 border-b border-gray-100 pb-4 overflow-x-auto whitespace-nowrap md:flex-wrap md:gap-y-3 md:overflow-visible">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className={`font-body text-sm transition-colors flex items-center gap-2 ${active === cat ? 'text-gray-900 font-semibold' : 'text-gray-400 hover:text-gray-600'}`}
+                className={`font-body text-sm transition-colors flex items-center gap-2 shrink-0 ${active === cat ? 'text-gray-900 font-semibold' : 'text-gray-400 hover:text-gray-600'}`}
               >
                 {active === cat && <span className="w-1.5 h-1.5 rounded-full bg-[#0C9348]" />}
                 {cat}
@@ -81,7 +85,7 @@ export default function Blog() {
             {posts.map((_, i) => (
               <ScrollReveal key={i} delay={(i % 3) * 80}>
                 <article className="flex flex-col cursor-pointer group">
-                  <div className="rounded-xl bg-[#044422] aspect-[16/10] mb-4 flex items-center justify-center overflow-hidden">
+                  <div className="rounded-none sm:rounded-xl bg-[#044422] aspect-[16/10] mb-4 flex items-center justify-center overflow-hidden">
                     <span className="font-body text-xs text-white/30">Image</span>
                   </div>
                   <h3 className="font-heading font-semibold text-lg text-gray-900 mb-1 group-hover:text-[#0C9348] transition-colors">[Blog Title]</h3>

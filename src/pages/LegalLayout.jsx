@@ -52,16 +52,16 @@ export default function LegalLayout({ title, subtitle, sections }) {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 antialiased">
-      <Navbar />
+      <Navbar variant="light" />
 
       {/* Hero */}
-      <section className="bg-hero-bg pt-32 md:pt-36 pb-14 px-6">
+      <section className="bg-[#F8F8F8] pt-32 md:pt-36 pb-14 px-6">
         <div className="max-w-[1080px] mx-auto">
-          <span className="font-body text-xs font-semibold uppercase tracking-wider text-[#00F676] mb-3 block">Legal</span>
-          <h1 className="font-heading font-medium text-4xl md:text-[52px] text-white leading-[1.05] tracking-[-0.02em] mb-3">
+          <span className="font-body text-xs font-semibold uppercase tracking-wider text-[#0C9348] mb-3 block">Legal</span>
+          <h1 className="font-heading font-medium text-4xl md:text-[52px] text-gray-900 leading-[1.05] tracking-[-0.02em] mb-3">
             {title}
           </h1>
-          <p className="font-body text-sm text-white/80 max-w-[340px]">{subtitle}</p>
+          <p className="font-body text-sm text-gray-500 max-w-[340px]">{subtitle}</p>
         </div>
       </section>
 
@@ -78,9 +78,9 @@ export default function LegalLayout({ title, subtitle, sections }) {
                   <a
                     key={s.id}
                     href={`#${s.id}`}
-                    className={`font-body text-sm py-1.5 pl-4 -ml-px border-l transition-colors ${
+                    className={`font-body text-sm p-2.5 -ml-px border-l transition-colors ${
                       activeId === s.id
-                        ? 'border-[#0C9348] text-gray-900 font-medium'
+                        ? 'border-[#0C9348] bg-[#E0FAF2]/50 text-[#0C9348] font-medium'
                         : 'border-transparent text-gray-400 hover:text-gray-700'
                     }`}
                   >

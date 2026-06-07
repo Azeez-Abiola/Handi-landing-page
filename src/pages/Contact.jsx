@@ -32,8 +32,8 @@ export default function Contact() {
       <Navbar />
 
       {/* Hero */}
-      <section className="bg-hero-bg pt-32 md:pt-36 pb-16 px-6">
-        <div className="max-w-[1080px] mx-auto">
+      <section className="bg-[#04361B] pt-32 md:pt-36 pb-16 px-6">
+        <div className="max-w-[1313px] mx-auto">
           <ScrollReveal>
             <span className="font-body text-xs font-semibold uppercase tracking-wider text-[#00F676] mb-3 block">Contact</span>
             <h1 className="font-heading font-medium text-4xl md:text-[52px] text-white leading-[1.05] tracking-[-0.02em] mb-3">
@@ -48,11 +48,11 @@ export default function Contact() {
 
       {/* Form + channels */}
       <section className="bg-white py-16 px-6">
-        <div className="max-w-[1080px] mx-auto grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12">
+        <div className="max-w-[1313px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_312px] gap-x-[70px] gap-y-12">
 
           {/* Form */}
           <ScrollReveal direction="left">
-            <div className="bg-[#F5F5F5] rounded-[20px] p-7 md:p-9">
+            <div className="bg-[#F5F5F5] rounded-[16px] p-7">
               <h2 className="font-heading font-semibold text-xl text-gray-900 mb-2">Send us a message</h2>
               <p className="font-body text-sm text-gray-500 mb-7">Fill out the form and our team will get back to you shortly.</p>
               <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
@@ -60,7 +60,10 @@ export default function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <Field label="Phone">
                     <div className="flex gap-2">
-                      <span className="flex items-center gap-1 bg-white border border-gray-200 rounded-xl px-3 h-12 text-sm text-gray-700 shrink-0">+234 ▾</span>
+                      <span className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-xl px-3 h-12 text-sm text-gray-700 shrink-0">
+                        +234
+                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6673 7.5L10.0007 14.1667L3.33398 7.5" stroke="black" strokeWidth="1.25" strokeLinecap="square"/></svg>
+                      </span>
                       <input className={inputCls} placeholder="811-123-4582" />
                     </div>
                   </Field>

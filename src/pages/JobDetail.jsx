@@ -72,7 +72,7 @@ export default function JobDetail() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 antialiased">
-      <Navbar />
+      <Navbar variant="light" />
 
       {/* Header */}
       <section className="bg-white pt-32 md:pt-36 pb-10 px-6">
@@ -97,7 +97,8 @@ export default function JobDetail() {
 
       {/* Body */}
       <section className="bg-white pb-16 px-6">
-        <div className="max-w-[1080px] mx-auto lg:pl-[44%]">
+        <div className="max-w-[1080px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-10">
+          <div className="hidden lg:block" />
           <div className="space-y-10">
             <div>
               <h2 className="font-heading font-semibold text-lg text-gray-900 mb-3">About the role</h2>
@@ -120,8 +121,8 @@ export default function JobDetail() {
       </section>
 
       {/* Apply form */}
-      <section className="bg-[#044422] py-16 md:py-20 px-6">
-        <div className="max-w-[1080px] mx-auto bg-[#F5F5F5] rounded-[24px] p-7 md:p-12">
+      <section className="bg-[#044422] pt-16 md:pt-20 pb-0 px-6">
+        <div className="max-w-[1080px] mx-auto bg-[#F5F5F5] rounded-t-[24px] p-7 md:p-12">
           <h2 className="font-heading font-semibold text-2xl text-gray-900 mb-2">Apply for this role</h2>
           <p className="font-body text-sm text-gray-500 mb-8">
             Tell us about yourself and why you're interested. We read every application and respond within a few days.
@@ -132,7 +133,10 @@ export default function JobDetail() {
               <Field label="Name"><input className={inputCls} placeholder="Enter your name" /></Field>
               <Field label="Phone">
                 <div className="flex gap-2">
-                  <span className="flex items-center gap-1 bg-white border border-gray-200 rounded-xl px-3 h-12 text-sm text-gray-700 shrink-0">+234 ▾</span>
+                  <span className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-xl px-3 h-12 text-sm text-gray-700 shrink-0">
+                    +234
+                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6673 7.5L10.0007 14.1667L3.33398 7.5" stroke="black" strokeWidth="1.25" strokeLinecap="square"/></svg>
+                  </span>
                   <input className={inputCls} placeholder="811-123-4582" />
                 </div>
               </Field>
@@ -141,8 +145,10 @@ export default function JobDetail() {
             </div>
 
             <Field label="Upload Resume*">
-              <div className="w-full bg-[#E9FBF1] border border-dashed border-[#0C9348]/40 rounded-xl px-4 py-4 flex items-center gap-3 text-sm text-gray-500 cursor-pointer">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0C9348" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="M17 8l-5-5-5 5M12 3v12" /></svg>
+              <div className="w-full bg-[#E0FAF2] border border-dashed border-[#AEC8C0] rounded-xl px-3 py-3 flex items-center gap-2.5 text-[13px] text-gray-700 cursor-pointer whitespace-nowrap">
+                <span className="w-8 h-8 rounded-full bg-[#0C9348] flex items-center justify-center shrink-0">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="M17 8l-5-5-5 5M12 3v12" /></svg>
+                </span>
                 Drop your files here or click to browse.
               </div>
             </Field>
