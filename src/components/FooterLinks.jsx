@@ -4,16 +4,16 @@ const navColumns = [
   {
     heading: 'Navigation',
     links: [
-      { label: 'About', href: '#' },
-      { label: 'Careers', href: '#' },
-      { label: 'Contact Us', href: '#' },
+      { label: 'About', to: '/about' },
+      { label: 'Careers', to: '/careers' },
+      { label: 'Contact Us', to: '/contact' },
     ],
   },
   {
     heading: 'Resources',
     links: [
-      { label: 'Blog', href: '#' },
-      { label: 'Careers', href: '#' },
+      { label: 'Blog', to: '/blog' },
+      { label: 'Careers', to: '/careers' },
     ],
   },
   {
@@ -21,7 +21,7 @@ const navColumns = [
     links: [
       { label: 'Privacy Policy', to: '/privacy' },
       { label: 'Terms of Service', to: '/terms' },
-      { label: 'Security', href: '#' },
+      { label: 'Security', to: '/privacy' },
     ],
   },
 ];

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Newsletter from '../components/Newsletter';
 import FAQ from '../components/FAQ';
@@ -26,6 +26,14 @@ function Field({ label, children }) {
 
 export default function Contact() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  const [toast, setToast] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    e.target.reset();
+    setToast(true);
+    setTimeout(() => setToast(false), 4000);
+  };
 
   return (
     <div className="min-h-screen bg-white text-gray-900 antialiased">
@@ -55,7 +63,7 @@ export default function Contact() {
             <div className="bg-[#F5F5F5] rounded-[16px] p-7">
               <h2 className="font-heading font-semibold text-xl text-gray-900 mb-2">Send us a message</h2>
               <p className="font-body text-sm text-gray-500 mb-7">Fill out the form and our team will get back to you shortly.</p>
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <Field label="Name"><input className={inputCls} placeholder="Enter your name" /></Field>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <Field label="Phone">
@@ -120,6 +128,18 @@ export default function Contact() {
       <FAQ />
       <FooterCTA />
       <FooterLinks />
+
+      {/* Success toast */}
+      <div
+        className={`fixed bottom-6 right-6 z-[100] flex items-center gap-3 bg-[#0C9348] text-white px-5 py-4 rounded-xl shadow-2xl transition-all duration-300 ${toast ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
+        role="status"
+        aria-live="polite"
+      >
+        <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 shrink-0">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+        </span>
+        <span className="font-body text-sm font-medium">Message sent! We'll get back to you shortly.</span>
+      </div>
     </div>
   );
 }
