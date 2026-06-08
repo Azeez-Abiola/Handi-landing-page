@@ -15,6 +15,7 @@ import About from './pages/About';
 import Careers from './pages/Careers';
 import JobDetail from './pages/JobDetail';
 import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 
 function LandingPage() {
@@ -43,6 +44,7 @@ export default function App() {
         <Route path="/careers" element={<Careers />} />
         <Route path="/careers/:slug" element={<JobDetail />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />

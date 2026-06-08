@@ -1,10 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Newsletter from '../components/Newsletter';
 import FooterCTA from '../components/FooterCTA';
 import FooterLinks from '../components/FooterLinks';
 import ScrollReveal from '../components/ScrollReveal';
+import { sanity } from '../lib/sanity';
+
+const JOB_QUERY = `*[_type == "jobRole" && slug.current == $slug][0]{
+  title, department, location, employmentType, about, responsibilities, requirements
+}`;
 
 /* Full content shown for the Front Desk role; other slugs fall back to a generic shell. */
 const jobs = {
@@ -68,7 +73,26 @@ const inputCls = 'w-full bg-white border border-gray-200 rounded-xl px-4 h-12 te
 export default function JobDetail() {
   const { slug } = useParams();
   useEffect(() => { window.scrollTo(0, 0); }, [slug]);
-  const job = jobs[slug] || fallback(slug);
+
+  const [fetched, setFetched] = useState(null);
+  useEffect(() => {
+    let on = true;
+    sanity.fetch(JOB_QUERY, { slug })
+      .then((r) => {
+        if (!on || !r) return;
+        setFetched({
+          title: r.title,
+          meta: [r.department, r.location, r.employmentType].filter(Boolean),
+          about: r.about || '',
+          duties: r.responsibilities || [],
+          requirements: r.requirements || [],
+        });
+      })
+      .catch(() => { if (on) setFetched(null); });
+    return () => { on = false; };
+  }, [slug]);
+
+  const job = fetched || jobs[slug] || fallback(slug);
 
   return (
     <div className="min-h-screen bg-white text-gray-900 antialiased">

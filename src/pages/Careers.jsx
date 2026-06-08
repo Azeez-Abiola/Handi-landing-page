@@ -1,9 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import FooterCTA from '../components/FooterCTA';
 import FooterLinks from '../components/FooterLinks';
 import ScrollReveal from '../components/ScrollReveal';
+import { sanity } from '../lib/sanity';
+
+const ROLES_QUERY = `*[_type == "jobRole" && isOpen == true]|order(order asc, _createdAt asc){
+  title, "slug": slug.current, department, location, workMode, employmentType
+}`;
 
 const perkIcons = [
   (
@@ -39,7 +44,7 @@ const perks = [
   { title: "You'll learn fast", desc: "Startup pace means constant learning. You'll wear multiple hats, solve diverse problems, and grow your skills way faster than at a big company." },
 ];
 
-const roles = [
+const fallbackRoles = [
   { title: 'UI/UX Designer', dept: 'Design', place: 'Lagos, NG • Remote', type: 'Full Time', slug: 'ui-ux-designer' },
   { title: 'Product Manager', dept: 'Product', place: 'Lagos, NG • Hybrid', type: 'Full Time', slug: 'product-manager' },
   { title: 'Frontend Developer', dept: 'Development', place: 'Lagos, NG • On-site', type: 'Part Time', slug: 'frontend-developer' },
@@ -52,6 +57,27 @@ const roles = [
 
 export default function Careers() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  const [fetched, setFetched] = useState(null);
+  useEffect(() => {
+    let on = true;
+    sanity.fetch(ROLES_QUERY)
+      .then((r) => {
+        if (!on) return;
+        const mapped = (r || []).map((role) => ({
+          title: role.title,
+          dept: role.department,
+          place: [role.location, role.workMode].filter(Boolean).join(' • '),
+          type: role.employmentType,
+          slug: role.slug,
+        }));
+        setFetched(mapped);
+      })
+      .catch(() => { if (on) setFetched(null); });
+    return () => { on = false; };
+  }, []);
+
+  const roles = fetched && fetched.length ? fetched : fallbackRoles;
 
   return (
     <div className="min-h-screen bg-white text-gray-900 antialiased">
