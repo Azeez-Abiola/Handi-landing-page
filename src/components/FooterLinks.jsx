@@ -5,7 +5,6 @@ const navColumns = [
     heading: 'Navigation',
     links: [
       { label: 'About', to: '/about' },
-      { label: 'Careers', to: '/careers' },
       { label: 'Contact Us', to: '/contact' },
     ],
   },
