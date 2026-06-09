@@ -5,6 +5,7 @@ const navColumns = [
     heading: 'Navigation',
     links: [
       { label: 'About', to: '/about' },
+      { label: 'Careers', to: '/careers' },
       { label: 'Contact Us', to: '/contact' },
     ],
   },
@@ -12,7 +13,6 @@ const navColumns = [
     heading: 'Resources',
     links: [
       { label: 'Blog', to: '/blog' },
-      { label: 'Careers', to: '/careers' },
     ],
   },
   {
