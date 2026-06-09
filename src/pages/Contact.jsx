@@ -13,7 +13,11 @@ const channels = [
   { title: 'Providers', sub: 'For professional partners', email: 'contact@tryhandi.com', phone: '+234 916 035 9039' },
 ];
 
+const API_BASE = 'https://dev-api.tryhandi.com';
+
 const inputCls = 'w-full bg-white border border-gray-200 rounded-xl px-4 h-12 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-[#0C9348] transition-colors';
+
+const emptyForm = { name: '', phone: '', email: '', subjectId: '', message: '' };
 
 function Field({ label, children }) {
   return (
@@ -27,12 +31,57 @@ function Field({ label, children }) {
 export default function Contact() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
-  const [toast, setToast] = useState(false);
-  const handleSubmit = (e) => {
+  const [subjects, setSubjects] = useState([]);
+  const [form, setForm] = useState(emptyForm);
+  const [sending, setSending] = useState(false);
+  const [toast, setToast] = useState(null); // { type: 'success' | 'error', msg }
+
+  useEffect(() => {
+    let on = true;
+    fetch(`${API_BASE}/contact/subjects`)
+      .then((r) => r.json())
+      .then((d) => { if (on && Array.isArray(d?.data)) setSubjects(d.data); })
+      .catch(() => {});
+    return () => { on = false; };
+  }, []);
+
+  const showToast = (type, msg) => {
+    setToast({ type, msg });
+    setTimeout(() => setToast(null), 4000);
+  };
+
+  const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    e.target.reset();
-    setToast(true);
-    setTimeout(() => setToast(false), 4000);
+    if (sending) return;
+    setSending(true);
+    try {
+      const phoneDigits = form.phone.replace(/\D/g, '').replace(/^0+/, '');
+      const payload = {
+        name: form.name.trim(),
+        phoneNumber: `+234${phoneDigits}`,
+        email: form.email.trim(),
+        subjectId: form.subjectId,
+        message: form.message.trim(),
+      };
+      const res = await fetch(`${API_BASE}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && (data.responseCode === '00' || data.status === 'success')) {
+        setForm(emptyForm);
+        showToast('success', "Message sent! We'll get back to you shortly.");
+      } else {
+        showToast('error', data.message || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      showToast('error', 'Network error. Please check your connection and try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -64,7 +113,7 @@ export default function Contact() {
               <h2 className="font-heading font-semibold text-xl text-gray-900 mb-2">Send us a message</h2>
               <p className="font-body text-sm text-gray-500 mb-7">Fill out the form and our team will get back to you shortly.</p>
               <form onSubmit={handleSubmit} className="space-y-5">
-                <Field label="Name"><input className={inputCls} placeholder="Enter your name" /></Field>
+                <Field label="Name"><input required value={form.name} onChange={update('name')} className={inputCls} placeholder="Enter your name" /></Field>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <Field label="Phone">
                     <div className="flex gap-2">
@@ -72,25 +121,24 @@ export default function Contact() {
                         +234
                         <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6673 7.5L10.0007 14.1667L3.33398 7.5" stroke="black" strokeWidth="1.25" strokeLinecap="square"/></svg>
                       </span>
-                      <input className={inputCls} placeholder="811-123-4582" />
+                      <input required type="tel" value={form.phone} onChange={update('phone')} className={inputCls} placeholder="811-123-4582" />
                     </div>
                   </Field>
-                  <Field label="E-mail Address"><input type="email" className={inputCls} placeholder="Enter your e-mail address" /></Field>
+                  <Field label="E-mail Address"><input required type="email" value={form.email} onChange={update('email')} className={inputCls} placeholder="Enter your e-mail address" /></Field>
                 </div>
                 <Field label="Subject">
-                  <select className={`${inputCls} appearance-none`} defaultValue="">
+                  <select required value={form.subjectId} onChange={update('subjectId')} className={`${inputCls} appearance-none ${form.subjectId ? 'text-gray-900' : 'text-gray-400'}`}>
                     <option value="" disabled>Choose a topic</option>
-                    <option>General Inquiry</option>
-                    <option>Customer Support</option>
-                    <option>Careers</option>
-                    <option>Providers / Partnerships</option>
+                    {subjects.map((s) => (
+                      <option key={s.id} value={s.id} className="text-gray-900">{s.label}</option>
+                    ))}
                   </select>
                 </Field>
                 <Field label="Message">
-                  <textarea rows={5} className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-[#0C9348] transition-colors resize-none" placeholder="How can we help?" />
+                  <textarea required rows={5} value={form.message} onChange={update('message')} className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-[#0C9348] transition-colors resize-none" placeholder="How can we help?" />
                 </Field>
-                <button type="submit" className="bg-[#0C9348] text-white font-body font-semibold text-sm rounded-xl px-6 py-3 flex items-center gap-2 transition-all duration-300 hover:bg-[#0a7d3d] hover:-translate-y-0.5">
-                  Send
+                <button type="submit" disabled={sending} className="bg-[#0C9348] text-white font-body font-semibold text-sm rounded-xl px-6 py-3 flex items-center gap-2 transition-all duration-300 hover:bg-[#0a7d3d] hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0">
+                  {sending ? 'Sending…' : 'Send'}
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </button>
               </form>
@@ -129,16 +177,20 @@ export default function Contact() {
       <FooterCTA />
       <FooterLinks />
 
-      {/* Success toast */}
+      {/* Toast — success / error */}
       <div
-        className={`fixed bottom-6 right-6 z-[100] flex items-center gap-3 bg-[#0C9348] text-white px-5 py-4 rounded-xl shadow-2xl transition-all duration-300 ${toast ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
+        className={`fixed bottom-6 right-6 z-[100] flex items-center gap-3 text-white px-5 py-4 rounded-xl shadow-2xl transition-all duration-300 ${toast?.type === 'error' ? 'bg-[#C0392B]' : 'bg-[#0C9348]'} ${toast ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
         role="status"
         aria-live="polite"
       >
         <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20 shrink-0">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+          {toast?.type === 'error' ? (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
+          ) : (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+          )}
         </span>
-        <span className="font-body text-sm font-medium">Message sent! We'll get back to you shortly.</span>
+        <span className="font-body text-sm font-medium">{toast?.msg || ''}</span>
       </div>
     </div>
   );
