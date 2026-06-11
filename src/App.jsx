@@ -17,6 +17,7 @@ import JobDetail from './pages/JobDetail';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
+import SessionRedirect from './pages/SessionRedirect';
 
 function LandingPage() {
   return (
@@ -46,6 +47,7 @@ export default function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/session/redirect" element={<SessionRedirect />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
       </Routes>
