@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "W2LH379M5F.com.handi.user.ios",
+        "paths": ["*"]
+      }
+    ]
+  },
+  "activitycontinuation": {
+    "apps": ["W2LH379M5F.com.handi.user.ios"]
+  },
+  "webcredentials": {
+    "apps": ["W2LH379M5F.com.handi.user.ios"]
+  }
+}

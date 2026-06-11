@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.handi.user.android",
+      "sha256_cert_fingerprints": [
+        "3E:F1:21:0F:3C:79:5B:A0:E1:8F:BB:34:38:3B:BC:FD:84:B2:42:0B:95:C6:CC:32:B6:84:F6:55:14:D8:C0:0F"
+      ]
+    }
+  }
+]
