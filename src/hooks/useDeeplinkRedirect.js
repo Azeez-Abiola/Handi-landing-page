@@ -8,18 +8,17 @@ const WEB_FALLBACK = 'https://tryhandi.com';
  * Redirects an in-app browser back into the Handi app via a custom-scheme deep link.
  *
  * Flow: await onMount (e.g. a delay to let openAuthSession redirect first) ->
- * await beforeRedirect -> force redirect to the deep link -> after 2s, fall back
- * to the correct store / website if the app didn't open.
+ * force redirect to the deep link -> after 2s, fall back to the correct
+ * store / website if the app didn't open.
  *
  * @param {object}   opts
  * @param {string}   opts.path           - deep-link path, e.g. "payment/complete"
  * @param {object}   [opts.query]        - params to forward into the deep link
- * @param {Function} [opts.beforeRedirect]
  * @param {Function} [opts.onMount]      - awaited before redirecting (use for a delay)
  * @param {Function} [opts.onError]
  * @returns {{ appUrl: string, goToApp: () => void }} - manual redirect helper for a button
  */
-export default function useDeeplinkRedirect({ path, query = {}, beforeRedirect, onMount, onError }) {
+export default function useDeeplinkRedirect({ path, query = {}, onMount, onError }) {
   // Serialize query so the effect doesn't re-run on every render (object identity changes otherwise).
   const queryString = new URLSearchParams(query).toString();
   const fullPath = queryString ? `${path}?${queryString}` : path;
@@ -44,7 +43,6 @@ export default function useDeeplinkRedirect({ path, query = {}, beforeRedirect, 
       try {
         // Give openAuthSession (or whatever opened this page) a chance to redirect first.
         await onMount?.();
-        await beforeRedirect?.();
         // Force the redirect, keeping the provider's query params.
         window.location.href = appUrl;
         // If the app didn't grab the URL, send them to the fallback.
