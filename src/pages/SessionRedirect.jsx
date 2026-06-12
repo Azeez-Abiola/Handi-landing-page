@@ -1,18 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import useDeeplinkRedirect from '../hooks/useDeeplinkRedirect';
 
 // How long to wait for openAuthSession to redirect before we force it.
 const REDIRECT_DELAY_MS = 3000;
 
 export default function SessionRedirect() {
-  const [params] = useSearchParams();
-  // Forward every query param the payment provider sent into the deep link.
-  const query = Object.fromEntries(params.entries());
-
+  // No-op deep link: just reopen the app where the user left off — the app already
+  // holds the payment reference and verifies it natively. No route, no params.
   const { goToApp } = useDeeplinkRedirect({
-    path: 'payment/complete',
-    query,
+    path: '',
     // Delay the forced redirect to give the native session a chance to handle it first.
     onMount: () => new Promise((resolve) => setTimeout(resolve, REDIRECT_DELAY_MS)),
   });
