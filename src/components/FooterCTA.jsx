@@ -7,7 +7,8 @@ export default function FooterCTA({ line1 = 'Ready to fix it?', line2 = 'Downloa
     "/images/handi-img2.png",
     "/images/handi-img3.png",
     "/images/handi-img4.png",
-    "/images/handi-img5.png"
+    "/images/handi-img5.png",
+    "/images/handi-img6.png"
   ];
 
   const repeatedImages = [...images, ...images, ...images, ...images];

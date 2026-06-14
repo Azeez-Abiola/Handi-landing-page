@@ -12,7 +12,8 @@ export default function Carousel() {
     { name: "General Repairs", img: "/images/handi-img2.png" },
     { name: "Home Beauty Services", img: "/images/handi-img3.png" },
     { name: "Plumbing", img: "/images/handi-img4.png" },
-    { name: "Electrical Repairs", img: "/images/handi-img5.png" }
+    { name: "Electrical Repairs", img: "/images/handi-img5.png" },
+    { name: "Chefs", img: "/images/handi-img6.png" }
   ];
 
   const scrollAmount = 315; // card width (291px) + gap (24px)
@@ -135,22 +136,13 @@ export default function Carousel() {
                 key={idx}
                 className="flex-none w-[291px] h-[367px] rounded-[10px] relative overflow-hidden snap-start shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-lg"
               >
-                <img 
-                  src={cat.img} 
-                  alt={`${cat.name} Category`} 
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                <img
+                  src={cat.img}
+                  alt={`${cat.name} Category`}
+                  className="w-full h-full object-cover object-bottom transition-transform duration-500 hover:scale-105"
                   draggable="false"
                 />
-                
-                {/* Category label — plain text, no background (shadow keeps it legible on any image) */}
-                <div className="absolute bottom-4 left-4">
-                  <span
-                    className="text-white text-sm font-body font-semibold tracking-[-0.01em]"
-                    style={{ textShadow: '0 1px 4px rgba(0,0,0,0.55)' }}
-                  >
-                    {cat.name}
-                  </span>
-                </div>
+                {/* Label is baked into each image — no text overlay (avoids the doubled label) */}
               </div>
             ))}
           </div>
