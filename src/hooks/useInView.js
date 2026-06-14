@@ -10,7 +10,12 @@ export function useInView(threshold = 0.12) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setInView(entry.isIntersecting);
+        // Reveal once, then stop observing — prevents the animation from
+        // replaying (and glitching) every time the element re-enters view.
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
       },
       { threshold }
     );

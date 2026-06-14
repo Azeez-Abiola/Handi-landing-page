@@ -95,7 +95,7 @@ export default function Carousel() {
   };
 
   return (
-    <section className="bg-white py-24 overflow-hidden select-none">
+    <section className="bg-white py-14 md:py-24 overflow-hidden select-none">
       <div className="max-w-[1200px] mx-auto px-6">
         
         {/* Header Block */}
@@ -142,9 +142,12 @@ export default function Carousel() {
                   draggable="false"
                 />
                 
-                {/* Category label pill */}
+                {/* Category label — plain text, no background (shadow keeps it legible on any image) */}
                 <div className="absolute bottom-4 left-4">
-                  <span className="text-white text-xs font-body font-semibold tracking-[-0.01em] bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full">
+                  <span
+                    className="text-white text-sm font-body font-semibold tracking-[-0.01em]"
+                    style={{ textShadow: '0 1px 4px rgba(0,0,0,0.55)' }}
+                  >
                     {cat.name}
                   </span>
                 </div>

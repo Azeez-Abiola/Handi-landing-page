@@ -147,7 +147,7 @@ export default function Steps() {
   /* ── MOBILE: full-height cards with embedded image ── */
   if (!isDesktop) {
     return (
-      <section className="bg-white pt-20 pb-16">
+      <section className="bg-white pt-4 pb-16">
         <div className="mx-auto px-4">
           <div className="px-2 mb-8 md:mb-12">
             <h2 className="font-heading font-medium text-2xl text-gray-900 tracking-[-0.02em] mb-3">
