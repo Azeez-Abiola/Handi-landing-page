@@ -39,7 +39,6 @@ function LandingPage() {
 export default function App() {
   return (
     <BrowserRouter>
-      <div aria-hidden="true" className="safari-status-tint" />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<About />} />

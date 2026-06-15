@@ -113,23 +113,10 @@
 }
 
 /* Prevent horizontal scroll without breaking position:sticky */
-html, body {
-  overflow-x: clip;
+html {
+  background-color: #0C9348;
 }
 
-/*
-  Safari 26+ ignores theme-color and samples a fixed element at the viewport
-  top for status-bar tint. This 3px strip is invisible to layout but tells
-  Safari to paint the top chrome green — navbar spacing stays unchanged.
-*/
-.safari-status-tint {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-height: 3px;
-  height: 3px;
-  background-color: #0C9348;
-  z-index: 60;
-  pointer-events: none;
+html, body {
+  overflow-x: clip;
 }
