@@ -14,7 +14,7 @@ export default function Navbar({ variant = 'dark' }) {
   const light = variant === 'light';
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50 safe-area-top py-6 md:py-8">
+    <header className="absolute top-0 left-0 w-full z-50 py-6 md:py-8">
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
 
         {/* Logo */}
