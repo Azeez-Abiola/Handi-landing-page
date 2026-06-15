@@ -116,3 +116,10 @@
 html, body {
   overflow-x: clip;
 }
+
+/* Extend layouts into iOS safe areas (notch / status bar) */
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
