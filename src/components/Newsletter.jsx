@@ -30,9 +30,11 @@ export default function Newsletter() {
         {/* Newsletter illustration — in flow on mobile, bottom-anchored on desktop */}
         <div className="w-full lg:w-0 shrink-0 flex items-end justify-center">
           <img
-            src="/images/illustrations/lady-on-phone.png"
+            src="/images/illustrations/lady-on-phone.webp"
             alt=""
             draggable="false"
+            loading="lazy"
+            decoding="async"
             className="w-full max-w-[379px] object-contain object-bottom lg:w-auto lg:max-w-none lg:h-[522px] lg:absolute lg:top-[64px] lg:right-[7%]"
           />
         </div>

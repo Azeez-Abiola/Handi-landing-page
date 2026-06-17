@@ -26,7 +26,7 @@ export default function About() {
             className="absolute"
             style={{
               width: '820px', height: '950px', top: '-150px', right: '-210px',
-              backgroundImage: "url('/images/handi-logo-green.png')",
+              backgroundImage: "url('/images/handi-logo-green.webp')",
               backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
             }}
           />
@@ -44,9 +44,11 @@ export default function About() {
 
           {/* Lady illustration — legs spill into the section below */}
           <img
-            src="/images/illustrations/lady-seating2.png"
+            src="/images/illustrations/lady-seating2.webp"
             alt=""
             draggable="false"
+            loading="lazy"
+            decoding="async"
             className="w-full mt-8 md:mt-0 md:w-[760px] md:max-w-[60%] md:absolute md:right-0 md:bottom-[-56px] object-contain object-bottom z-[2]"
           />
         </div>

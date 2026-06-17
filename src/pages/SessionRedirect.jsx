@@ -26,7 +26,7 @@ export default function SessionRedirect() {
   return (
     <main className="min-h-screen bg-hero-bg flex flex-col items-center justify-center px-6 text-center select-none">
       <img
-        src="/images/handi-logo-light-green.png"
+        src="/images/handi-logo-light-green.webp"
         alt="Handi"
         className="h-9 w-auto object-contain brightness-0 invert mb-10"
         draggable="false"

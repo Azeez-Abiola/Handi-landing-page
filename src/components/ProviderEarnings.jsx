@@ -53,7 +53,7 @@ export default function ProviderEarnings() {
 
         {/* Right Column — single composed image (technician + floating cards baked in) */}
         <ScrollReveal direction="right" className="relative w-full lg:w-[700px] shrink-0 z-10 flex items-center justify-center">
-          <img src="/for-providers-img.png" alt="Expand your earnings" className="w-full h-auto max-w-[640px] select-none pointer-events-none" draggable="false" />
+          <img src="/for-providers-img.webp" alt="Expand your earnings" className="w-full h-auto max-w-[640px] select-none pointer-events-none" draggable="false" loading="lazy" decoding="async" />
         </ScrollReveal>
 
         {/* Mobile-only list */}

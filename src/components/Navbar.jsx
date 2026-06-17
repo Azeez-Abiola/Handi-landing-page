@@ -20,7 +20,7 @@ export default function Navbar({ variant = 'dark' }) {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 transition-transform duration-300 hover:scale-105 shrink-0">
           <img
-            src="/images/handi-logo-light-green.png"
+            src="/images/handi-logo-light-green.webp"
             alt="Handi Logo"
             className={`h-8 w-auto object-contain ${light ? '' : 'brightness-0 invert'}`}
           />

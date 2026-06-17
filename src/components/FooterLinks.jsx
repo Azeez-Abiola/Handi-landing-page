@@ -82,7 +82,7 @@ export default function FooterLinks() {
         <div className="shrink-0">
           <div className="flex items-center gap-2">
             <img
-              src="/images/handi-logo-light-green.png"
+              src="/images/handi-logo-light-green.webp"
               alt="Handi Logo"
               className="h-6 w-auto object-contain"
             />

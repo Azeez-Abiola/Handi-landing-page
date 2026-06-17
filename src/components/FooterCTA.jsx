@@ -3,12 +3,12 @@ import { openCustomerApp, openProviderApp } from '../lib/appLinks';
 
 export default function FooterCTA({ line1 = 'Ready to fix it?', line2 = 'Download Handi now.' }) {
   const images = [
-    "/images/handi-img1.png",
-    "/images/handi-img2.png",
-    "/images/handi-img3.png",
-    "/images/handi-img4.png",
-    "/images/handi-img5.png",
-    "/images/handi-img6.png"
+    "/images/handi-img1.webp",
+    "/images/handi-img2.webp",
+    "/images/handi-img3.webp",
+    "/images/handi-img4.webp",
+    "/images/handi-img5.webp",
+    "/images/handi-img6.webp"
   ];
 
   const repeatedImages = [...images, ...images, ...images, ...images];
@@ -25,7 +25,7 @@ export default function FooterCTA({ line1 = 'Ready to fix it?', line2 = 'Downloa
                 key={idx}
                 className="w-[150px] md:w-[230px] h-[220px] md:h-[320px] rounded-2xl overflow-hidden shadow-2xl shrink-0 brightness-[0.75] border border-white/5"
               >
-                <img src={img} alt="" className="w-full h-full object-cover" draggable="false" />
+                <img src={img} alt="" className="w-full h-full object-cover" draggable="false" loading="lazy" decoding="async" />
               </div>
             ))}
           </div>

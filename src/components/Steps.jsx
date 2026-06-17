@@ -49,9 +49,11 @@ function StepImage({ activeStep, style, className }) {
 
   return (
     <img
-      src={`/images/get-help-images/card-${shownStep}.png`}
+      src={`/images/get-help-images/card-${shownStep}.webp`}
       alt={`Step ${shownStep}`}
       draggable="false"
+      loading="lazy"
+      decoding="async"
       className={className}
       style={{ ...style, opacity, transition: 'opacity 0.4s ease' }}
     />
@@ -196,9 +198,11 @@ export default function Steps() {
                   {/* Green card image — full width, 408px tall */}
                   <div className="px-4 pb-4 mt-auto">
                     <img
-                      src={`/images/get-help-images/card-${step.id}.png`}
+                      src={`/images/get-help-images/card-${step.id}.webp`}
                       alt={`Step ${step.id}`}
                       draggable="false"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full object-cover"
                       style={{ height: '408px', borderRadius: '12px' }}
                     />

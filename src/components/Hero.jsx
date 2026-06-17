@@ -58,7 +58,7 @@ export default function Hero() {
             height: '1390px',
             top: '-280px',
             left: '-140px',
-            backgroundImage: "url('/images/handi-logo-green.png')",
+            backgroundImage: "url('/images/handi-logo-green.webp')",
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'
@@ -69,13 +69,13 @@ export default function Hero() {
       {/* Desktop-only illustrations */}
       <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[1440px] pointer-events-none z-30 overflow-visible hidden lg:block">
         <img
-          src="/images/illustrations/painter.png"
+          src="/images/illustrations/painter.webp"
           alt="Handi Painter"
           className="absolute"
           style={{ width: '800px', height: '760px', bottom: 0, left: '-60px', objectFit: 'contain', objectPosition: 'bottom' }}
         />
         <img
-          src="/images/illustrations/lady-seating.png"
+          src="/images/illustrations/lady-seating.webp"
           alt="Handi Lady Seating"
           className="absolute"
           style={{ width: '580px', height: '620px', bottom: 0, left: '890px', objectFit: 'contain', objectPosition: 'bottom' }}
@@ -175,7 +175,7 @@ export default function Hero() {
         {/* Mobile-only illustration — lady seating below download buttons */}
         <div className="block lg:hidden -mt-28 w-full overflow-visible self-start" style={{ marginLeft: '-12px' }}>
           <img
-            src="/images/illustrations/lady-seating.png"
+            src="/images/illustrations/lady-seating.webp"
             alt=""
             draggable="false"
             style={{ width: '484px', height: '518px', objectFit: 'contain', objectPosition: 'bottom left' }}
