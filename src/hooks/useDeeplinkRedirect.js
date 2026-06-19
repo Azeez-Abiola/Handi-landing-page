@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { storeLink } from '../lib/appLinks';
+import { useSearchParams } from 'react-router-dom';
 
 // Where to send the user if the app isn't installed (deep link fails).
 const WEB_FALLBACK = 'https://tryhandi.com';
@@ -20,7 +21,8 @@ const WEB_FALLBACK = 'https://tryhandi.com';
  */
 export default function useDeeplinkRedirect({ path, query = {}, onMount, onError }) {
   // Serialize query so the effect doesn't re-run on every render (object identity changes otherwise).
-  const queryString = new URLSearchParams(query).toString();
+  const [queryString] = useSearchParams()
+  console.log("[useDeeplinkRedirect]:queryString", queryString)
   const fullPath = queryString ? `${path}?${queryString}` : path;
   const appUrl = `handiapp://${fullPath}`;
 

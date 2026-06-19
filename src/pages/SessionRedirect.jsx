@@ -5,6 +5,7 @@ import useDeeplinkRedirect from '../hooks/useDeeplinkRedirect';
 const REDIRECT_DELAY_MS = 3000;
 
 export default function SessionRedirect() {
+
   // No-op deep link: just reopen the app where the user left off — the app already
   // holds the payment reference and verifies it natively. No route, no params.
   const { goToApp } = useDeeplinkRedirect({
