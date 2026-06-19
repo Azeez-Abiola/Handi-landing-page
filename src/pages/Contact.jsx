@@ -8,9 +8,9 @@ import ScrollReveal from '../components/ScrollReveal';
 
 const channels = [
   { title: 'Customer Support', sub: 'For app-related questions', link: { label: 'Open support form →', href: '#' } },
-  { title: 'General Inquiries', sub: 'For press, partnerships, general', email: 'contact@tryhandi.com', phone: '+234 916 035 9039' },
+  { title: 'General Inquiries', sub: 'For press, partnerships, general', email: 'contact@tryhandi.com', phone: '09160011097' },
   { title: 'Careers', sub: 'For job applications', email: 'careers@tryhandi.com' },
-  { title: 'Providers', sub: 'For professional partners', email: 'contact@tryhandi.com', phone: '+234 916 035 9039' },
+  { title: 'Providers', sub: 'For professional partners', email: 'contact@tryhandi.com', phone: '09160011097' },
 ];
 
 const API_BASE = 'https://dev-api.tryhandi.com';
